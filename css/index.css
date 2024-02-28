@@ -1,0 +1,21 @@
+/* Estilos adicionales */
+.container {
+    margin-top: 50px;
+  }
+  
+  .table {
+    width: 100%;
+  }
+  
+  /* Estilos para el temporizador */
+  .temporizador-rojo  {
+    color: white;
+    background-color: red;
+    font-weight: bolder;
+    }
+
+    
+
+
+  
+  
