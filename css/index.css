@@ -2,20 +2,44 @@
 .container {
     margin-top: 50px;
   }
-  
-  .table {
+.table {
     width: 100%;
-  }
+
+}
   
   /* Estilos para el temporizador */
-  .temporizador-rojo  {
+.temporizador-rojo  {
     color: white;
     background-color: red;
     font-weight: bolder;
-    }
-
-    
-
-
+}
+#tablaDatos th {
+  /* Estilos para todas las celdas th dentro de la tabla con el id 'tablaDatos' */
+  /* Ajusta los valores según sea necesario */
+  text-align: center;
+}
+#titulo2{
   
+  text-align: center;
+      color: black;
+      font-family: 'Arial', sans-serif;
+      font-size: 2.5em;
+      margin: 20px 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      letter-spacing: 2px;
+}
+#titulo{
+  margin-top: 80px;
   
+}
+
+.form-group{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#Flauta{
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
