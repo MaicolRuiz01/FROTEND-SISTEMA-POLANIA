@@ -13,6 +13,7 @@
     background-color: red;
     font-weight: bolder;
 }
+
 #tablaDatos th {
   /* Estilos para todas las celdas th dentro de la tabla con el id 'tablaDatos' */
   /* Ajusta los valores según sea necesario */
