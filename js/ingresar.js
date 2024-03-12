@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    
+
+    var turno = 1;
+
     document.getElementById('formularioServicio').addEventListener('submit', function (event) {
         // Prevenir el comportamiento predeterminado de envío del formulario
         event.preventDefault();
@@ -10,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var fechaActual = new Date();
         var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
 
-        
+
 
 
 
@@ -27,6 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (precio == '') {
             precio = ((cantidad * 5000) + 10000);
         }
+
+        
+        if (chavetas == '') {
+            chavetas = 0;
+        }
+
+        var turno = 1;
+
+
+
+
         // Crear el objeto de datos para enviar al servidor
         var datos = {
             fechaHora: fechaHoraFormateada, // Agregar la fecha actual
@@ -35,14 +48,19 @@ document.addEventListener('DOMContentLoaded', function () {
             cantidad: cantidad,
             chavetas: chavetas,
             flauta: flauta,
-            precio: precio,
-            pago: pago,
-            listo: listo
+            precio1: precio,
+            precio2: precio,
+            pago1: pago,
+            pago2: pago,
+            listo: listo,
+            turno: turno
 
             // Agrega aquí los otros campos del formulario según tus necesidades
         };
 
-        // Enviar la solicitud POST al servidor
+        //                           Incrementar el turno y reiniciarlo si alcanza el límite (12)
+        turno = turno % 12 + 1;
+
         fetch('http://localhost:8080/servicios/save', {
             method: 'POST',
             headers: {
@@ -54,11 +72,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Verificar si la solicitud fue exitosa
                 if (response.ok) {
                     // Si la respuesta es exitosa, mostrar un mensaje de éxito al usuario
-                    obtenerYMostrarDatos();
+
                     alert('Servicio guardado exitosamente.');
+                    
                 } else {
-                    // Si hay un error en la respuesta, lanzar un error
-                    throw new Error('Error en la respuesta del servidor.');
+                    // Si hay un error en la respuesta, obtener el mensaje de error del servidor
+                    response.json().then(function (data) {
+                        // Mostrar el mensaje de error al usuario
+                        alert('Error: ' + data.message);
+                    }).catch(function (error) {
+                        // Si no se puede obtener el mensaje de error del servidor, mostrar un mensaje genérico
+                        alert('Error en la respuesta del servidor.');
+                    });
                 }
             })
             .catch(function (error) {
@@ -67,5 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Mostrar un mensaje de error al usuario
                 alert('Ocurrió un error al guardar el servicio.');
             });
+            fetch('http://localhost:8080/servicios')
+                        .then(response => response.json())
+                        .then(data => cargarDatosEnTabla(data))
+                        .catch(error => console.error('Error al obtener los datos de la tabla:', error));
     });
 });
