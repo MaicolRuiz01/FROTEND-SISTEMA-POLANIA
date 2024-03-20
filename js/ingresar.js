@@ -23,19 +23,24 @@ document.addEventListener('DOMContentLoaded', function () {
         var chavetas = document.getElementById('chavetas').value;
         var precio = document.getElementById('especial').value;
         var flauta = document.getElementById('flexSwitchCheckDefault').checked;
-        var pago = "Sin Pagar"
-        var listo = "en proceso";
+        var tiempoEspecial = document.getElementById('tiempoEspecialCheckbox').checked;
 
+        var pago = "Sin Pagar"
+        var pago2 = "N/A"
+        var precio2 = 0
+        var listo = "proceso";
+        var entregado = 0;
         if (precio == '') {
             precio = ((cantidad * 5000) + 10000);
         }
 
-        
+
         if (chavetas == '') {
             chavetas = 0;
         }
 
-        var turno = 1;
+
+
 
 
 
@@ -49,11 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
             chavetas: chavetas,
             flauta: flauta,
             precio1: precio,
-            precio2: precio,
+            precio2: precio2,
             pago1: pago,
-            pago2: pago,
+            pago2: pago2,
             listo: listo,
-            turno: turno
+            turno: turno,
+            tiempo: tiempoEspecial,
+            entregado: entregado
 
             // Agrega aquí los otros campos del formulario según tus necesidades
         };
@@ -75,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     alert('Servicio guardado exitosamente.');
                     
+
                 } else {
                     // Si hay un error en la respuesta, obtener el mensaje de error del servidor
                     response.json().then(function (data) {
@@ -92,9 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Mostrar un mensaje de error al usuario
                 alert('Ocurrió un error al guardar el servicio.');
             });
-            fetch('http://localhost:8080/servicios')
-                        .then(response => response.json())
-                        .then(data => cargarDatosEnTabla(data))
-                        .catch(error => console.error('Error al obtener los datos de la tabla:', error));
+
+                
     });
 });
