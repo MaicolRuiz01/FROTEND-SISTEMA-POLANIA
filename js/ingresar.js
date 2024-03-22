@@ -1,7 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    var turno = 1;
+    var turno = localStorage.getItem('turno');
+    if (!turno) {
+        // Si no hay un valor guardado para turno, establecerlo en 1
+        turno = 1;
+    }
 
     document.getElementById('formularioServicio').addEventListener('submit', function (event) {
         // Prevenir el comportamiento predeterminado de envío del formulario

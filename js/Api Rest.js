@@ -32,21 +32,29 @@ function cargarDatosEnTabla(datos) {
     nuevaFila.append('<td>' + fila.vehiculo + '</td>');
     nuevaFila.append('<td>' + fila.cantidad + '</td>');
 
-    if (fila.pago1 == "Sin Pagar")
+
+
+    if (fila.pago1 == "Sin Pagar" ){
       nuevaFila.append('<td>' + "SIN P" + '</td>');
+    }else{
+      nuevaFila.append('<td>' + fila.pago1 + '</td>');
+    }
+
+
     nuevaFila.append('<td>' + fila.pago2 + '</td>');
     nuevaFila.append('<td>' + fila.precio1/1000 + '</td>');
-    nuevaFila.append('<td>' + fila.precio2 + '</td>');
+    nuevaFila.append('<td>' + fila.precio2/1000 + '</td>');
     nuevaFila.append('<td>' + (fila.flauta == 0 ? "N" : "S") + '</td>');
     nuevaFila.append('<td>' + fila.chavetas + '</td>');
     nuevaFila.append('<td>' + fila.listo + '</td>');
     nuevaFila.append('<td>' + (fila.entregado == 0 ? "NO" : "SI") + '</td>');
 
     var tiempoTemp = 0;
-    if(fila.tiempo == 0){
-      tiempoTemp = 3600;
-    }else{
+
+    if(fila.tiempo == 1){
       tiempoTemp = 7200;
+    }else{
+      tiempoTemp = 3600;
     }
 
 
@@ -58,7 +66,7 @@ function cargarDatosEnTabla(datos) {
 
     // Crear una celda para los botones de dinero y diagnóstico y agregar los botones dentro de ella
 
-    nuevaFila.append('<td><button class="btn btn-success" onclick="editarModal(' + fila.id + ')"><span class="material-symbols-outlined">payments</span></button></td>');
+    nuevaFila.append('<td><button class="btn btn-success" onclick="editarModal(' + fila.id + ',' + fila.precio1 + ')"><span class="material-symbols-outlined">payments</span></button></td>');
 
 
     tabla.append(nuevaFila);
@@ -134,33 +142,6 @@ fetch('http://localhost:8080/servicios')
 }
 
 
-function editarModal(id) {
-  $("#modal-editar").modal('show');
-
-  fetch(`http://localhost:8080/servicios/${id}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('La solicitud no fue exitosa');
-      }
-      return response.json();
-    })
-    .then(elemento => {
-      // Verifica que los elementos con los IDs "precio1" y "precio2" existan
-      var precio1Input = document.getElementById("precio1");
-      var precio2Input = document.getElementById("precio2");
-      
-      if (precio1Input && precio2Input) {
-        // Establece los valores de los inputs
-        precio1Input.value = elemento.precio1;
-        precio2Input.value = elemento.precio2;
-      } else {
-        console.error('Los elementos con los IDs "precio1" o "precio2" no existen en el DOM.');
-      }
-    })
-    .catch(error => {
-      console.error('Error al obtener los datos del servicio:', error);
-    });
-}
 
 
 obtenerDatos();
