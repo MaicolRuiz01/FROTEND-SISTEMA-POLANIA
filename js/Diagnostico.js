@@ -1,65 +1,69 @@
-$(document).ready(function() {
-  // Agregar un evento que se active cada vez que el modal se muestre
-  $('#modal-pago').on('show.bs.modal', function() {
-    // Restablecer todos los valores de los campos del formulario a su estado inicial
-    $('#form-editar-id').val('');
-    $('#metodo_pago').val('EFECTIVO');
-    $('#metodo_pago2').val('N/A');
-    $('#varios_metodos').prop('checked', false);
-    $('#precio1').val('');
-    $('#entregadoCheckbox').prop('checked', false);
-  });
-});
+function diagModal(id, tiempoRestanteDetenido) {
+  $("#modal-diag").modal('show');
 
-function editarModal(id, precio1, pago1, pago2) {
-  $("#modal-pago").modal('show');
-
-  document.getElementById("form-editar-id").value = id;
-  document.getElementById("precio1").value = precio1;
-  document.getElementById("metodo_pago").value = pago1;
-  document.getElementById("metodo_pago2").value = pago2;
+  document.getElementById("form-diag-id").value = id;
+  document.getElementById("form-diag-detenido").value = tiempoRestanteDetenido;
 }
 
-$(document).ready(function () {
-  $("#varios_metodos").change(function () {
-    if (this.checked) {
-      $("#metodo_pago_2").show();
-    } else {
-      $("#metodo_pago_2").hide();
-    }
-  });
-});
-
-$("body").on("submit", "#form-editar", function (event) {
+$("body").on("submit", "#form-diag", function (event) {
   event.preventDefault();
 
-  if ($("#form-editar").valid()) {
-    editarElemento();
+  if ($("#form-diag").valid()) {
+    editarDatos();
   }
 });
 
-function editarElemento() {
-  const id = document.getElementById("form-editar-id").value;
+function editarDatos() {
+  
+
+  const id = document.getElementById("form-diag-id").value;
 
   fetch(`http://localhost:8080/servicios/${id}`)
     .then(response => response.json())
-    .then(elementos => modificarDatos(elementos));
+    .then(elementos => modificarDiagnostico(elementos));
+
+ 
 }
 
-function modificarDatos(elementos) {
-  const id = document.getElementById("form-editar-id").value;
-  const metodoPago1 = document.getElementById("metodo_pago").value;
-  const metodoPago2 = document.getElementById("metodo_pago2").value;
-  const precio1 = document.getElementById("precio1").value;
-  var entregado = document.getElementById('entregadoCheckbox').checked;
-  const precioAnterior = elementos.precio1 + elementos.precio2;
-  var fechaActual = new Date();
-  var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
-  var precio2 = 0;
+function modificarDiagnostico(elementos) {
+  var id = document.getElementById("form-diag-id").value;
+  var demora = document.getElementById("form-diag-detenido").value;
 
-  if (precioAnterior != precio1) {
-    precio2 = precioAnterior - precio1; // Calcular la diferencia entre el precio nuevo y el anterior
-  }
+  var pulso = document.getElementById("pulso").value;
+  var goteo = document.getElementById("goteo").value;
+  var directo = document.getElementById('directo').value;
+  var mas = document.getElementById('mas').value;
+  var menos = document.getElementById('menos').value;
+  var diag = "";
+ 
+ if(pulso != ""){
+  diag = diag + "P: " + pulso;
+ }
+
+ if(goteo != ""){
+  diag = diag + "G: " + goteo;
+ }
+
+ if(directo != ""){
+  diag = diag + "D: " + directo;
+ }
+
+ if(mas != ""){
+  diag = diag + "mas: " + mas;
+ }
+
+ if(menos != ""){
+  diag = diag + "menos: " + menos;
+ }
+
+ if(diag == ""){
+  diag ="Todo bien";
+ }
+    
+
+
+  var listo = "listo";
+  
 
 
 
@@ -68,21 +72,15 @@ function modificarDatos(elementos) {
   var cantidad = elementos.cantidad;
   var chavetas = elementos.chavetas;
   var flauta = elementos.flauta;
-  var listo = elementos.listo;
   var turno = elementos.turno;
   var tiempoEspecial = elementos.tiempo;
-  var demora = elementos.demora;
-  var diagnostico = elementos.diagnostico;
+  var entregado = elementos.entregado;
+  var fechaHoraFormateada = elementos.fechaHora;
+  var precio1 = elementos.precio1;
+  var precio2 = elementos.precio2;
+  var metodoPago1 = elementos.pago1;
+  var metodoPago2 = elementos.pago2;
 
-  if(listo == "proceso" && entregado == 1){
-
-    alert('No ha dado un diagnostico al servicio, no puede ser entregado');
-    entregado = 0;
-  }
-
-  if(entregado == 0){
-    fechaHoraFormateada = elementos.fechaHora;
-  }
   var datos = {
     nombreCliente: cliente,
     vehiculo: vehiculo,
@@ -94,12 +92,12 @@ function modificarDatos(elementos) {
     tiempo: tiempoEspecial,
     entregado: entregado,
     fechaHora: fechaHoraFormateada,
+    diagnostico: diag,
     precio1: precio1,
     precio2: precio2,
     pago1: metodoPago1,
     pago2: metodoPago2,
-    demora: demora,
-    diagnostico: diagnostico
+    demora: demora
   }
 
   fetch(`http://localhost:8080/servicios/save/${id}`, { // Utiliza "id" en la URL
@@ -161,3 +159,5 @@ function mostrarError(mensaje) {
     confirmButtonText: 'Aceptar'
   });
 }
+
+

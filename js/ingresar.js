@@ -1,24 +1,19 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-
     var turno = localStorage.getItem('turno');
     if (!turno) {
         // Si no hay un valor guardado para turno, establecerlo en 1
         turno = 1;
+    } else {
+        // Convertir el valor recuperado a un número entero
+        turno = parseInt(turno);
     }
 
     document.getElementById('formularioServicio').addEventListener('submit', function (event) {
         // Prevenir el comportamiento predeterminado de envío del formulario
         event.preventDefault();
 
-
-
         var fechaActual = new Date();
-        var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
-
-
-
-
+        var fechaHoraFormateada = fechaActual.toISOString(); // Obtener la fecha y hora sin los milisegundos
 
         // Obtener los valores de los campos del formulario
         var cliente = document.getElementById('cliente').value;
@@ -38,16 +33,9 @@ document.addEventListener('DOMContentLoaded', function () {
             precio = ((cantidad * 5000) + 10000);
         }
 
-
         if (chavetas == '') {
             chavetas = 0;
         }
-
-
-
-
-
-
 
         // Crear el objeto de datos para enviar al servidor
         var datos = {
@@ -65,12 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
             turno: turno,
             tiempo: tiempoEspecial,
             entregado: entregado
-
-            // Agrega aquí los otros campos del formulario según tus necesidades
         };
 
-        //                           Incrementar el turno y reiniciarlo si alcanza el límite (12)
+        // Incrementar el turno y reiniciarlo si alcanza el límite (12)
         turno = turno % 12 + 1;
+
+        // Guardar el nuevo valor de turno en el localStorage
+        localStorage.setItem('turno', turno);
 
         fetch('http://localhost:8080/servicios/save', {
             method: 'POST',
@@ -79,32 +68,56 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(datos)
         })
-            .then(function (response) {
-                // Verificar si la solicitud fue exitosa
-                if (response.ok) {
-                    // Si la respuesta es exitosa, mostrar un mensaje de éxito al usuario
-
-                    alert('Servicio guardado exitosamente.');
-                    
-
-                } else {
-                    // Si hay un error en la respuesta, obtener el mensaje de error del servidor
-                    response.json().then(function (data) {
-                        // Mostrar el mensaje de error al usuario
-                        alert('Error: ' + data.message);
-                    }).catch(function (error) {
-                        // Si no se puede obtener el mensaje de error del servidor, mostrar un mensaje genérico
-                        alert('Error en la respuesta del servidor.');
-                    });
-                }
-            })
-            .catch(function (error) {
-                // Capturar y manejar errores de la solicitud
-                console.error('Error:', error);
-                // Mostrar un mensaje de error al usuario
-                alert('Ocurrió un error al guardar el servicio.');
-            });
-
-                
+        .then(function (response) {
+            // Verificar si la solicitud fue exitosa
+            if (response.ok) {
+                // Si la respuesta es exitosa, mostrar una alerta de éxito
+                mostrarExito('Servicio guardado exitosamente.');
+            } else {
+                // Si hay un error en la respuesta, obtener el mensaje de error del servidor
+                response.json().then(function (data) {
+                    // Mostrar una alerta de error con el mensaje del servidor
+                    mostrarError('Error: ' + data.message);
+                }).catch(function (error) {
+                    // Si no se puede obtener el mensaje de error del servidor, mostrar un mensaje genérico
+                    mostrarError('Error en la respuesta del servidor.');
+                });
+            }
+        })
+        .catch(function (error) {
+            // Capturar y manejar errores de la solicitud
+            console.error('Error:', error);
+            // Mostrar una alerta de error genérico
+            mostrarError('Ocurrió un error al guardar el servicio.');
+        });
     });
 });
+
+// Función para mostrar una alerta de éxito
+function mostrarExito(mensaje) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: mensaje,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Cerrar el modal
+            $('#exampleModal').modal('hide');
+            // Actualizar la tabla
+            obtenerDatos();
+        }
+    });
+}
+
+// Función para mostrar una alerta de error
+function mostrarError(mensaje) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar'
+    });
+}
