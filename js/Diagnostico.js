@@ -80,6 +80,11 @@ function modificarDiagnostico(elementos) {
   var precio2 = elementos.precio2;
   var metodoPago1 = elementos.pago1;
   var metodoPago2 = elementos.pago2;
+  var demoraCargada = elementos.demora;
+
+  if(demoraCargada != null){
+    demora = demoraCargada;
+  }
 
   var datos = {
     nombreCliente: cliente,
@@ -142,7 +147,7 @@ function mostrarExito(mensaje) {
   }).then((result) => {
     if (result.isConfirmed) {
       // Cerrar el modal
-      $("#modal-pago").modal('hide');
+      $("#modal-diag").modal('hide');
       // Actualizar la tabla
       obtenerDatos();
     }

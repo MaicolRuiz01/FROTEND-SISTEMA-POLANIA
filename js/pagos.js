@@ -147,6 +147,7 @@ function mostrarExito(mensaje) {
       $("#modal-pago").modal('hide');
       // Actualizar la tabla
       obtenerDatos();
+      
     }
   });
 }
