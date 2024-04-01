@@ -18,7 +18,7 @@ function editarDatos() {
 
   const id = document.getElementById("form-diag-id").value;
 
-  fetch(`http://sistema-polania-production.up.railway.app/servicios/${id}`)
+  fetch(`https://sistema-polania-production.up.railway.app/servicios/${id}`)
     .then(response => response.json())
     .then(elementos => modificarDiagnostico(elementos));
 
@@ -105,7 +105,7 @@ function modificarDiagnostico(elementos) {
     demora: demora
   }
 
-  fetch(`http://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
+  fetch(`https://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
