@@ -41,7 +41,7 @@ $("body").on("submit", "#form-editar", function (event) {
 function editarElemento() {
   const id = document.getElementById("form-editar-id").value;
 
-  fetch(`http://localhost:8080/servicios/${id}`)
+  fetch(`http://sistema-polania-production.up.railway.app/servicios/${id}`)
     .then(response => response.json())
     .then(elementos => modificarDatos(elementos));
 }
@@ -102,7 +102,7 @@ function modificarDatos(elementos) {
     diagnostico: diagnostico
   }
 
-  fetch(`http://localhost:8080/servicios/save/${id}`, { // Utiliza "id" en la URL
+  fetch(`http://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
