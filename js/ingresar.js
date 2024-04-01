@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Guardar el nuevo valor de turno en el localStorage
         localStorage.setItem('turno', turno);
 
-        fetch('http://sistema-polania-production.up.railway.app/servicios/save', {
+        fetch('https://sistema-polania-production.up.railway.app/servicios/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
