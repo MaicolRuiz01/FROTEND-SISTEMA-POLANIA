@@ -212,7 +212,7 @@ function mostrarError(mensaje) {
 // Función para obtener los datos de la tabla
 function obtenerDatos() {
   // Llamada a la API REST para obtener los datos de la tabla
-  fetch('http://localhost:8080/servicios')
+  fetch('http://sistema-polania-production.up.railway.app/servicios')
     .then(response => response.json())
     .then(data => cargarDatosEnTabla(data))
     .catch(error => mostrarError('Error al obtener los datos de la tabla: ' + error));
