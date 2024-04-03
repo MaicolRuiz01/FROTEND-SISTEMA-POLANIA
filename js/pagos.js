@@ -101,7 +101,6 @@ function modificarDatos(elementos) {
     demora: demora,
     diagnostico: diagnostico
   }
-
   fetch(`https://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
     method: 'PUT',
     headers: {

@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.ok) {
                 // Si la respuesta es exitosa, mostrar una alerta de éxito
                 mostrarExito('Servicio guardado exitosamente.');
+                
             } else {
                 // Si hay un error en la respuesta, obtener el mensaje de error del servidor
                 response.json().then(function (data) {
