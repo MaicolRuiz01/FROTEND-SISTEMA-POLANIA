@@ -7,8 +7,8 @@ function mostrar_impresoras(){
 
 
 async function imprimir(fila){
-    let nombreImpresora = "POS-80";
-    let api_key = "12345"
+    let nombreImpresora = "Samsung SCX-3400 Series";
+    let api_key = "123"
 
     var fechaCompleta = new Date(fila.fechaHora);
     var dia = fechaCompleta.getDate();
@@ -48,7 +48,7 @@ async function imprimir(fila){
 
             const resp = await conector.imprimir(nombreImpresora, api_key);
             if (resp === true) {              
-            
+              alert("Impresion Exitosa");
             } else {
                  console.log("Problema al imprimir: "+resp)                    
             
