@@ -1,3 +1,231 @@
+const ConectorPluginV3 = (() => {
 
-function _0x5258() { const _0x63b97b = ['AccionBarcode_ean13', 'push', 'barcode_ean13', '6421QcafDO', 'stringify', 'feed', 'textaling', '20kKxXOx', 'text', '12110tClDnw', 'datos', 'POST', 'json', 'imprimir', '3217794VzoTSW', 'barcode_39', '7061005ZaoNrM', '6750MLXIXy', 'AccionText', 'operaciones', 'URL_PLUGIN_POR_DEFECTO', '434EQyzWu', 'then', '/imprimir', 'Constantes', 'AccionFeed', '10fZpGiA', '/getprinters', '272985udOsRx', 'ruta', '285180EeKeaM', 'img_url', 'accion', 'fontsize', 'http://localhost:4567', 'cut', 'OperacionTicket', 'Accionqr', 'AccionBarcode_128', 'barcode_128', 'AccionCut', '60592zKRKta', '1276CSqEDt']; _0x5258 = function () { return _0x63b97b; }; return _0x5258(); } (function (_0x5f51f4, _0x49c462) { const _0x1edad2 = _0x5346, _0x2ff9e4 = _0x5f51f4(); while (!![]) { try { const _0x1e0996 = -parseInt(_0x1edad2(0x201)) / 0x1 * (-parseInt(_0x1edad2(0x1e8)) / 0x2) + parseInt(_0x1edad2(0x1ef)) / 0x3 * (-parseInt(_0x1edad2(0x205)) / 0x4) + parseInt(_0x1edad2(0x1ed)) / 0x5 * (-parseInt(_0x1edad2(0x1e1)) / 0x6) + -parseInt(_0x1edad2(0x1e3)) / 0x7 + parseInt(_0x1edad2(0x1fc)) / 0x8 + parseInt(_0x1edad2(0x1e4)) / 0x9 * (-parseInt(_0x1edad2(0x207)) / 0xa) + parseInt(_0x1edad2(0x1fd)) / 0xb * (parseInt(_0x1edad2(0x1f1)) / 0xc); if (_0x1e0996 === _0x49c462) break; else _0x2ff9e4['push'](_0x2ff9e4['shift']()); } catch (_0x283b5b) { _0x2ff9e4['push'](_0x2ff9e4['shift']()); } } }(_0x5258, 0xae1ad)); function _0x5346(_0xa55300, _0x26e3f7) { const _0x52588b = _0x5258(); return _0x5346 = function (_0x534645, _0x3a5986) { _0x534645 = _0x534645 - 0x1e1; let _0x4307f8 = _0x52588b[_0x534645]; return _0x4307f8; }, _0x5346(_0xa55300, _0x26e3f7); } const connetor_plugin = ((() => { const _0x52dfc8 = _0x5346; class _0x225c5d { constructor(_0x1007f3, _0x79164b) { const _0x5bac4f = _0x5346; this[_0x5bac4f(0x1f3)] = _0x1007f3 + '', this[_0x5bac4f(0x208)] = _0x79164b + ''; } } class _0x4d9d0d { static ['URL_PLUGIN_POR_DEFECTO'] = _0x52dfc8(0x1f5); static [_0x52dfc8(0x1f7)] = _0x225c5d; static [_0x52dfc8(0x1eb)] = { 'AccionText': _0x52dfc8(0x206), 'Accionqr': 'qr', 'AccionFontsize': _0x52dfc8(0x1f4), 'AccionTextaling': 'textaling', 'AccionFeed': 'feed', 'AccionBarcode_ean13': _0x52dfc8(0x200), 'AccionBarcode_code39': _0x52dfc8(0x1e2), 'AccionBarcode_code128': _0x52dfc8(0x1fa), 'AccionImg_location': _0x52dfc8(0x1f2), 'AccionCut': _0x52dfc8(0x1f6) }; constructor(_0x2c1e85) { const _0x5bd52e = _0x52dfc8; if (!_0x2c1e85) _0x2c1e85 = _0x4d9d0d[_0x5bd52e(0x1e7)]; return this['ruta'] = _0x2c1e85, this['operaciones'] = [], this; } static ['obtenerImpresoras'](_0x17dd53) { const _0x1ab57c = _0x52dfc8; if (_0x17dd53) _0x4d9d0d['URL_PLUGIN_POR_DEFECTO'] = _0x17dd53; return fetch(_0x4d9d0d[_0x1ab57c(0x1e7)] + _0x1ab57c(0x1ee))[_0x1ab57c(0x1e9)](_0x21d983 => _0x21d983[_0x1ab57c(0x20a)]()); } [_0x52dfc8(0x206)](_0x5efd9d) { const _0x5a3ab2 = _0x52dfc8; return this[_0x5a3ab2(0x1e6)]['push'](new _0x4d9d0d['OperacionTicket'](_0x4d9d0d[_0x5a3ab2(0x1eb)][_0x5a3ab2(0x1e5)], _0x5efd9d)), this; } ['qr'](_0x4ec9c6) { const _0x19b1ec = _0x52dfc8; return this[_0x19b1ec(0x1e6)][_0x19b1ec(0x1ff)](new _0x4d9d0d[(_0x19b1ec(0x1f7))](_0x4d9d0d[_0x19b1ec(0x1eb)][_0x19b1ec(0x1f8)], _0x4ec9c6)), this; } [_0x52dfc8(0x1f4)](_0x170e43) { const _0x5e2b89 = _0x52dfc8; return this['operaciones'][_0x5e2b89(0x1ff)](new _0x4d9d0d[(_0x5e2b89(0x1f7))](_0x4d9d0d[_0x5e2b89(0x1eb)]['AccionFontsize'], _0x170e43)), this; } [_0x52dfc8(0x203)](_0x355307) { const _0xd6e4ff = _0x52dfc8; return this[_0xd6e4ff(0x1e6)][_0xd6e4ff(0x1ff)](new _0x4d9d0d[(_0xd6e4ff(0x1f7))](_0x4d9d0d['Constantes'][_0xd6e4ff(0x1ec)], _0x355307)), this; } [_0x52dfc8(0x204)](_0xe21f95) { const _0x57410b = _0x52dfc8; return this[_0x57410b(0x1e6)][_0x57410b(0x1ff)](new _0x4d9d0d[(_0x57410b(0x1f7))](_0x4d9d0d[_0x57410b(0x1eb)]['AccionTextaling'], _0xe21f95)), this; } [_0x52dfc8(0x200)](_0x31d9c8) { const _0xb2bbdf = _0x52dfc8; return this[_0xb2bbdf(0x1e6)][_0xb2bbdf(0x1ff)](new _0x4d9d0d['OperacionTicket'](_0x4d9d0d[_0xb2bbdf(0x1eb)][_0xb2bbdf(0x1fe)], _0x31d9c8)), this; } [_0x52dfc8(0x1e2)](_0xcd7562) { const _0x8e2056 = _0x52dfc8; return this['operaciones']['push'](new _0x4d9d0d[(_0x8e2056(0x1f7))](_0x4d9d0d['Constantes']['AccionBarcode_39'], _0xcd7562)), this; } [_0x52dfc8(0x1fa)](_0x4a9b68) { const _0x39b7fe = _0x52dfc8; return this['operaciones']['push'](new _0x4d9d0d[(_0x39b7fe(0x1f7))](_0x4d9d0d[_0x39b7fe(0x1eb)][_0x39b7fe(0x1f9)], _0x4a9b68)), this; } [_0x52dfc8(0x1f2)](_0x3119e8) { const _0x32fa3c = _0x52dfc8; return this[_0x32fa3c(0x1e6)][_0x32fa3c(0x1ff)](new _0x4d9d0d['OperacionTicket'](_0x4d9d0d[_0x32fa3c(0x1eb)]['AccionImg_location'], _0x3119e8)), this; } [_0x52dfc8(0x1f6)](_0x1cd0bd) { const _0x474bb9 = _0x52dfc8; return this[_0x474bb9(0x1e6)][_0x474bb9(0x1ff)](new _0x4d9d0d[(_0x474bb9(0x1f7))](_0x4d9d0d[_0x474bb9(0x1eb)][_0x474bb9(0x1fb)], _0x1cd0bd)), this; } async[_0x52dfc8(0x20b)](_0x3a013d, _0x5b9057) { const _0x4dd20e = _0x52dfc8, _0x4d291b = { 'operaciones': this['operaciones'], 'nombre_impresora': _0x3a013d, 'api_key': _0x5b9057 }, _0x3970b3 = await fetch(this[_0x4dd20e(0x1f0)] + _0x4dd20e(0x1ea), { 'method': _0x4dd20e(0x209), 'body': JSON[_0x4dd20e(0x202)](_0x4d291b) }); return await _0x3970b3[_0x4dd20e(0x20a)](); } } return _0x4d9d0d; })());
+    /**
+     * Una clase para interactuar con el plugin v3
+     *
+     * @date 2022-09-28
+     * @author parzibyte
+     * @see https://parzibyte.me/blog
+     */
 
+    class Operacion {
+        constructor(nombre, argumentos) {
+            this.nombre = nombre;
+            this.argumentos = argumentos;
+        }
+    }
+
+    class ConectorPlugin {
+
+        static URL_PLUGIN_POR_DEFECTO = "http://localhost:8000";
+        static Operacion = Operacion;
+        static TAMAÑO_IMAGEN_NORMAL = 0;
+        static TAMAÑO_IMAGEN_DOBLE_ANCHO = 1;
+        static TAMAÑO_IMAGEN_DOBLE_ALTO = 2;
+        static TAMAÑO_IMAGEN_DOBLE_ANCHO_Y_ALTO = 3;
+        static TAMAÑO_IMAGEN_DOBLE_ANCHO_Y_ALTO = 3;
+        static ALINEACION_IZQUIERDA = 0;
+        static ALINEACION_CENTRO = 1;
+        static ALINEACION_DERECHA = 2;
+        static RECUPERACION_QR_BAJA = 0;
+        static RECUPERACION_QR_MEDIA = 1;
+        static RECUPERACION_QR_ALTA = 2;
+        static RECUPERACION_QR_MEJOR = 3;
+
+
+        constructor(ruta, serial) {
+            if (!ruta) ruta = ConectorPlugin.URL_PLUGIN_POR_DEFECTO;
+            if (!serial) serial = "";
+            this.ruta = ruta;
+            this.serial = serial;
+            this.operaciones = [];
+            return this;
+        }
+
+        CargarImagenLocalEImprimir(ruta, tamaño, maximoAncho) {
+            this.operaciones.push(new ConectorPlugin.Operacion("CargarImagenLocalEImprimir", Array.from(arguments)));
+            return this;
+        }
+        Corte(lineas) {
+            this.operaciones.push(new ConectorPlugin.Operacion("Corte", Array.from(arguments)));
+            return this;
+        }
+        CorteParcial() {
+            this.operaciones.push(new ConectorPlugin.Operacion("CorteParcial", Array.from(arguments)));
+            return this;
+        }
+        DefinirCaracterPersonalizado(caracterRemplazo, matriz) {
+            this.operaciones.push(new ConectorPlugin.Operacion("DefinirCaracterPersonalizado", Array.from(arguments)));
+            return this;
+        }
+        DescargarImagenDeInternetEImprimir(urlImagen, tamaño, maximoAncho) {
+            this.operaciones.push(new ConectorPlugin.Operacion("DescargarImagenDeInternetEImprimir", Array.from(arguments)));
+            return this;
+        }
+        DeshabilitarCaracteresPersonalizados() {
+            this.operaciones.push(new ConectorPlugin.Operacion("DeshabilitarCaracteresPersonalizados", Array.from(arguments)));
+            return this;
+        }
+        DeshabilitarElModoDeCaracteresChinos() {
+
+            this.operaciones.push(new ConectorPlugin.Operacion("DeshabilitarElModoDeCaracteresChinos", Array.from(arguments)));
+            return this;
+        }
+        EscribirTexto(texto) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EscribirTexto", Array.from(arguments)));
+            return this;
+        }
+        EstablecerAlineacion(alineacion) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerAlineacion", Array.from(arguments)));
+            return this;
+        }
+        EstablecerEnfatizado(enfatizado) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerEnfatizado", Array.from(arguments)));
+            return this;
+        }
+        EstablecerFuente(fuente) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerFuente", Array.from(arguments)));
+            return this;
+        }
+        EstablecerImpresionAlReves(alReves) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerImpresionAlReves", Array.from(arguments)));
+            return this;
+        }
+        EstablecerImpresionBlancoYNegroInversa(invertir) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerImpresionBlancoYNegroInversa", Array.from(arguments)));
+            return this;
+        }
+        EstablecerRotacionDe90Grados(rotar) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerRotacionDe90Grados", Array.from(arguments)));
+            return this;
+        }
+        EstablecerSubrayado(subrayado) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerSubrayado", Array.from(arguments)));
+            return this;
+        }
+        EstablecerTamañoFuente(multiplicadorAncho, multiplicadorAlto) {
+            this.operaciones.push(new ConectorPlugin.Operacion("EstablecerTamañoFuente", Array.from(arguments)));
+            return this;
+        }
+        Feed(lineas) {
+            this.operaciones.push(new ConectorPlugin.Operacion("Feed", Array.from(arguments)));
+            return this;
+        }
+        HabilitarCaracteresPersonalizados() {
+            this.operaciones.push(new ConectorPlugin.Operacion("HabilitarCaracteresPersonalizados", Array.from(arguments)));
+            return this;
+        }
+        HabilitarElModoDeCaracteresChinos() {
+            this.operaciones.push(new ConectorPlugin.Operacion("HabilitarElModoDeCaracteresChinos", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasCodabar(contenido, alto, ancho, tamañoImagen) {
+
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasCodabar", Array.from(arguments)));
+            return this;
+        }
+
+        ImprimirCodigoDeBarrasCode128(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasCode128", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasCode39(contenido, incluirSumaDeVerificacion, modoAsciiCompleto, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasCode39", Array.from(arguments)));
+            return this;
+        }
+
+        ImprimirCodigoDeBarrasCode93(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasCode93", Array.from(arguments)));
+            return this;
+        }
+
+        ImprimirCodigoDeBarrasEan(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasEan", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasEan8(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasEan8", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasPdf417(contenido, nivelSeguridad, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasPdf417", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasTwoOfFiveITF(contenido, intercalado, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasTwoOfFiveITF", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasUpcA(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasUpcA", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoDeBarrasUpcE(contenido, alto, ancho, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoDeBarrasUpcE", Array.from(arguments)));
+            return this;
+        }
+        ImprimirCodigoQr(contenido, anchoMaximo, nivelRecuperacion, tamañoImagen) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirCodigoQr", Array.from(arguments)));
+            return this;
+        }
+        ImprimirImagenEnBase64(imagenCodificadaEnBase64, tamaño, maximoAncho) {
+            this.operaciones.push(new ConectorPlugin.Operacion("ImprimirImagenEnBase64", Array.from(arguments)));
+            return this;
+        }
+
+        Iniciar() {
+            this.operaciones.push(new ConectorPlugin.Operacion("Iniciar", Array.from(arguments)));
+            return this;
+        }
+
+        Pulso(pin, tiempoEncendido, tiempoApagado) {
+            this.operaciones.push(new ConectorPlugin.Operacion("Pulso", Array.from(arguments)));
+            return this;
+        }
+
+        TextoSegunPaginaDeCodigos(numeroPagina, pagina, texto) {
+            this.operaciones.push(new ConectorPlugin.Operacion("TextoSegunPaginaDeCodigos", Array.from(arguments)));
+            return this;
+        }
+
+
+        static async obtenerImpresoras(ruta) {
+            if (ruta) ConectorPlugin.URL_PLUGIN_POR_DEFECTO = ruta;
+            const response = await fetch(ConectorPlugin.URL_PLUGIN_POR_DEFECTO + "/impresoras");
+            return await response.json();
+        }
+
+        static async obtenerImpresorasRemotas(ruta, rutaRemota) {
+            if (ruta) ConectorPlugin.URL_PLUGIN_POR_DEFECTO = ruta;
+            const response = await fetch(ConectorPlugin.URL_PLUGIN_POR_DEFECTO + "/reenviar?host=" + rutaRemota);
+            return await response.json();
+        }
+
+
+        async imprimirEnImpresoraRemota(nombreImpresora, rutaRemota) {
+            const payload = {
+                operaciones: this.operaciones,
+                nombreImpresora,
+                serial: this.serial,
+            };
+            const response = await fetch(this.ruta + "/reenviar?host=" + rutaRemota, {
+                method: "POST",
+                body: JSON.stringify(payload),
+            });
+            return await response.json();
+        }
+
+        async imprimirEn(nombreImpresora) {
+            const payload = {
+                operaciones: this.operaciones,
+                nombreImpresora,
+                serial: this.serial,
+            };
+            const response = await fetch(this.ruta + "/imprimir", {
+                method: "POST",
+                body: JSON.stringify(payload),
+            });
+            return await response.json();
+        }
+    }
+    return ConectorPlugin;
+})();
