@@ -7,7 +7,7 @@ function mostrar_impresoras(){
 
 
 async function imprimir(fila){
-    let nombreImpresora = "SAM4S ELLIX20II";
+    let nombreImpresora = "POS-80";
     let api_key = "12345"
 
     var fechaCompleta = new Date(fila.fechaHora);
