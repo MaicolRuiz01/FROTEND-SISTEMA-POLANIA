@@ -95,7 +95,8 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
 
     var botonDiag = $('<button>').addClass('btn btn-warning').append('<span class="material-symbols-outlined">check_box</span>');
     var botonPago = $('<button>').addClass('btn btn-success').append('<span class="material-symbols-outlined">payments</span>');
-    var botonEditarTd = $('<td>').append(botonPago, botonDiag);
+    var botonPrint = $('<button>').addClass('btn btn-danger').append('<span class="material-symbols-outlined">print</span>');
+    var botonEditarTd = $('<td>').append(botonPago, botonDiag, botonPrint);
     nuevaFila.append(botonEditarTd);
     
     
@@ -108,6 +109,10 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     botonDiag.on('click', function() {
       diagModal(fila.id, tiempoRestanteDetenido);
   });
+
+  botonPrint.on('click', function() {
+    imprimir(fila);
+ });
 
 
     var temporizadorInterval, cronometroInterval;
