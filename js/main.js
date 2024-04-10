@@ -11,6 +11,8 @@ function obtenerGananciasDelDia() {
         let gananciasDavivienda=0;
         let gananciasBancolombia=0;
         let credito=0;
+        let bajada=0;
+        let sincro=0;
         data.forEach(servicio => {
             // Extraer la fecha del servicio y obtener solo la parte de la fecha (sin la hora)
             const fechaServicio = servicio.fechaHora.substring(0, 10);
@@ -32,17 +34,29 @@ function obtenerGananciasDelDia() {
                 (servicio.pago1 === 'CREDITO' || servicio.pago2 === 'CREDITO')) {
                 credito += servicio.precio1 + servicio.precio2;
             }
+            if (fechaServicio === fechaActual &&
+                (servicio.tipoServicio === 'BAJADA')) {
+                bajada += servicio.manoObra;
+            }
+            if (fechaServicio === fechaActual &&
+                (servicio.tipoServicio === 'SINCRONIZACION')) {
+                sincro += servicio.manoObra;
+            }
         });
         // Mostrar las ganancias en un div en el frontend
         const divGanancias = document.getElementById('gananciasDelDia');
         const divDavivienda = document.getElementById('davivienda');
         const divBancolombia = document.getElementById('bancolombia');
         const divCredito = document.getElementById('credito');
+        const divBajada = document.getElementById('bajadas');
+        const divSincro = document.getElementById('sincro');
 
         divGanancias.textContent = `EFECTIVO: ${gananciasTotales}`;
         divDavivienda.textContent = `DAVIVIENDO: ${gananciasDavivienda}`;
         divBancolombia.textContent = `BANCOLOMBIA: ${gananciasBancolombia}`;
         divCredito.textContent = `CREDITO: ${credito}`;
+        divBajada.textContent = `BAJADA: ${bajada}`;
+        divSincro.textContent = `SINCRONIZACION: ${sincro}`;
     })
     .catch(error => console.error('Error al obtener las ganancias del día:', error));
 }

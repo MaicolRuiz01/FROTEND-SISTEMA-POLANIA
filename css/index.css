@@ -6,7 +6,6 @@
     width: 100%;
 
 }
-  
   /* Estilos para el temporizador */
 .temporizador-rojo  {
     color: white;
@@ -44,3 +43,22 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#tiempoEspecialContainer{
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#formulario .modal-dialog {
+  margin: auto;
+}
+
+#formulario .modal-content {
+  padding: 20px;
+}
+#btnGuargarSer{
+  margin-top: 15px;
+  width: 200px;
+}
+
