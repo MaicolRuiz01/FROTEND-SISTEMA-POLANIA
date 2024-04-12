@@ -34,10 +34,8 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     
     conector.Iniciar();
 
-    conector.EstablecerAlineacion("center");
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
     conector.Feed("3");
-    conector.EstablecerAlineacion("left");
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
     conector.EscribirTexto("------------------------------------------");
     conector.EscribirTexto("Turno: " + fila.turno);
