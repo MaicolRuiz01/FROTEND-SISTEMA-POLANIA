@@ -112,7 +112,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
   });
 
   botonPrint.on('click', function() {
-    imprimirImagenes(nombreImpresora);
+    imprimirImagenes(nombreImpresora, fila);
  });
 
 
