@@ -10,9 +10,6 @@ function mostrar_impresoras() {
 const imprimirImagenes = async (nombreImpresora, fila) => {
     const conector = new ConectorPluginV3(URLPlugin);
 
-    let nombreImpresora = "POS-80";
-    let api_key = "12345"
-
     var fechaCompleta = new Date(fila.fechaHora);
     var dia = fechaCompleta.getDate();
     var mes = fechaCompleta.getMonth() + 1; // Sumar 1 porque los meses se indexan desde 0
@@ -37,21 +34,21 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     conector.Iniciar();
     conector.Corte(1);
 
-    conector.CargarImagenLocalEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 160)
-    conector.EstablecerEnfatizado("2")
-    conector.EstablecerAlineacion("center")
-    conector.EscribirTexto("MULTIREPUESTOS POLANIA")
-    conector.EstablecerEnfatizado("1")
-    conector.feed("3")
-    conector.EstablecerAlineacion("left")
-    conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados)
-    conector.EscribirTexto("------------------------------------------")
-    conector.EscribirTexto("Turno: " + fila.turno)
-    conector.EscribirTexto("Vehiculo: " + fila.vehiculo)
-    conector.EscribirTexto("Cantidad : " + fila.cantidad)
-    conector.EscribirTexto("Precio : $" + precioTotal)
+    conector.CargarImagenLocalEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 160);
+    conector.EstablecerEnfatizado("2");
+    conector.EstablecerAlineacion("center");
+    conector.EscribirTexto("MULTIREPUESTOS POLANIA");
+    conector.EstablecerEnfatizado("1");
+    conector.Feed("3");
+    conector.EstablecerAlineacion("left");
+    conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
+    conector.EscribirTexto("------------------------------------------");
+    conector.EscribirTexto("Turno: " + fila.turno);
+    conector.EscribirTexto("Vehiculo: " + fila.vehiculo);
+    conector.EscribirTexto("Cantidad : " + fila.cantidad);
+    conector.EscribirTexto("Precio : $" + precioTotal);
     if (fila.flauta == 1) {
-        conector.EscribirTexto("Flauta : Si")
+        conector.EscribirTexto("Flauta : Si");
     }
 
     conector.Iniciar(); //Nota: esto solo es necesario en ocasiones, por ejemplo en mi impresora debo hacerlo siempre que acabo de imprimir una imagen
