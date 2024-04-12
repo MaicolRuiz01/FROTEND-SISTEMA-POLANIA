@@ -73,31 +73,13 @@
     </div>
 
     <button id="btnIngresar" class="btn btn-primary mb-3">Ingresar</button>
-    <button onclick="mostrar_impresoras()" id="btnImpresora" class="btn btn-primary">Mostrar Impresora</button>
 
-    <div class="container" id="resultados">
-      <div class="row">
-        <div class="col-sm">
-          <div id="gananciasDelDia"></div>
-        </div>
-        <div class="col-sm">
-          <div id="davivienda"></div>
-        </div>
-        <div class="col-sm">
-          <div id="bancolombia"></div>
-        </div>
-        <div class="col-sm">
-          <div id="credito"></div>
-        </div>
-        <div class="col-sm">
-          <div id="bajadas"></div>
-        </div>
-        <div class="col-sm">
-          <div id="sincro"></div>
-        </div>
-      </div>
+    <div class="container">
+      <div id="gananciasDelDia"></div>
+      <div id="davivienda"></div>
+      <div id="bancolombia"></div>
+      <div id="credito"></div>
     </div>
-
 
 
     <br>
@@ -120,7 +102,7 @@
           <th>Entregado</th>
           <th>Temporizador</th>
           <th>Acciones</th>
-          <th>Diagnostico</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -133,8 +115,7 @@
 
 
   <!-- Formulario emergente para ingresar nuevos servicios -->
-  <div id="formulario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div id="formulario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -142,68 +123,56 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form id="formularioServicio">
-          <div class="form-group">
-            <label for="cliente">Cliente</label>
-            <input type="text" class="form-control" id="cliente" name="cliente">
-          </div>
+        <div class="form-group">
+          <label for="cliente">Cliente:</label>
+          <input type="text" class="form-control" id="cliente" name="cliente">
+        </div>
 
-          <div class="form-group">
-            <label for="vehiculo">Vehículo</label>
-            <input type="text" class="form-control" id="vehiculo" name="vehiculo">
-          </div>
+        <div class="form-group">
+          <label for="vehiculo">Vehículo:</label>
+          <input type="text" class="form-control" id="vehiculo" name="vehiculo">
+        </div>
 
-          <div class="form-group">
-            <label for="cantidad">Cantidad</label>
-            <input type="number" class="form-control" id="cantidad" name="cantidad">
-          </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad:</label>
+          <input type="number" class="form-control" id="cantidad" name="cantidad">
+        </div>
 
-          <div class="form-group">
-            <label for="chavetas">Chavetas</label>
-            <input type="number" class="form-control" id="chavetas" name="vehiculo">
-          </div>
+        <div class="form-group">
+          <label for="chavetas">Chavetas:</label>
+          <input type="number" class="form-control" id="chavetas" name="vehiculo">
+        </div>
 
-          <div class="form-group">
-            <label for="especial">Precio Especial</label>
-            <input type="number" class="form-control" id="especial" name="especial">
-          </div>
+        <div class="form-group">
+          <label for="especial">Precio Especial:</label>
+          <input type="number" class="form-control" id="especial" name="especial">
+        </div>
 
-          <div class="form-check form-switch" id="Flauta">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Flauta</label>
-          </div>
+        <div class="form-check form-switch" id="Flauta">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Flauta</label>
+        </div>
 
-          <div class="form-check form-switch" id="tiempoEspecialContainer">
-            <input class="form-check-input" type="checkbox" role="switch" id="tiempoEspecialCheckbox">
-            <label class="form-check-label" for="tiempoEspecialCheckbox">Tiempo Especial</label>
-          </div>
+        <div class="form-check form-switch" id="tiempoEspecialContainer">
+          <input class="form-check-input" type="checkbox" role="switch" id="tiempoEspecialCheckbox">
+          <label class="form-check-label" for="tiempoEspecialCheckbox">Tiempo Especial</label>
+        </div>
 
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="activarServicio">
-              <label class="form-check-label" for="activarMetodoPago">Activar Servicio Pocho</label>
-            </div>
-          </div>
-
-         
-            <div id="formularioTipoServicio" style="display: none;">
-              <div class="form-group">
-                <label for="form-editar-tipo_servicio">Tipo de servicio:</label>
-                <select class="form-control" id="tiposervicio" name="tipo_servicio">
-                  <option value="BAJADA">BAJADA</option>
-                  <option value="SINCRONIZACION">SINCRONIZACION</option>
-                </select>
-              </div>
-            </div>
-
-            <input type="number" class="form-control" id="manobra" name="ManoObra" placeholder="Mano de Obra" style="display: none;">
-          <button type="submit" class="btn btn-primary" id="btnGuargarSer">Guardar</button>
-        </form>
+        <br>
+        <!-- Agrega aquí los otros campos del formulario según tus necesidades -->
+        <!-- Por ejemplo: -->
+        <!-- <div class="form-group">
+        <label for="nombreCliente">Nombre del Cliente:</label>
+        <input type="text" class="form-control" id="nombreCliente" name="nombreCliente">
+      </div> -->
+        <button type="submit" class="btn btn-primary" >Guardar</button>
+      </form>
+      </div>
       </div>
     </div>
   </div>
-  </div>
 
-  <!-- Formulario emergente para ingresar nuevos diagnostico -->
+  <!-- Formulario emergente para ingresar nuevos servicios -->
   <div id="modal-diag" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -299,6 +268,8 @@
               <label class="form-check-label" for="form-editar-varios_metodos">Varios métodos de pago</label>
             </div>
 
+
+
             <div class="form-group">
               <label for="form-editar-precio1">Precio 1:</label>
               <input type="number" class="form-control" id="precio1" name="precio1" min="0" step="0.01">
@@ -308,6 +279,9 @@
               <input class="form-check-input" type="checkbox" role="switch" id="entregadoCheckbox">
               <label class="form-check-label" for="entregadoCheckbox">Entregado</label>
             </div>
+
+
+
             <button type="submit" class="btn btn-primary" id="btnEnviar">Enviar</button>
 
           </form>
@@ -320,9 +294,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
@@ -333,10 +305,10 @@
   <script src="js/Api Rest.js"></script>
   <script src="js/pagos.js"></script>
   <script src="js/Diagnostico.js"></script>
+  <script src="js/imprimir.js"></script>
   <script src="js/plugin_impresora_termica.js"></script>
   <script src="js/main.js"></script>
   <script src="js/ingresar.js"></script>
-  <script src="js/imprimir.js"></script>
 </body>
 
 </html>

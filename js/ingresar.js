@@ -23,15 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var precio = document.getElementById('especial').value;
         var flauta = document.getElementById('flexSwitchCheckDefault').checked;
         var tiempoEspecial = document.getElementById('tiempoEspecialCheckbox').checked;
-        var tiposervicio = document.getElementById('tiposervicio').value;
-        var manobra = document.getElementById('manobra').value;
 
         var pago = "Sin Pagar"
         var pago2 = "N/A"
         var precio2 = 0
         var listo = "proceso";
         var entregado = 0;
-
         if (precio == '') {
             precio = ((cantidad * 5000) + 10000);
         }
@@ -55,9 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             listo: listo,
             turno: turno,
             tiempo: tiempoEspecial,
-            entregado: entregado,
-            tipoServicio: tiposervicio,
-            manoObra: manobra
+            entregado: entregado
         };
 
         // Incrementar el turno y reiniciarlo si alcanza el límite (12)
@@ -128,4 +123,3 @@ function mostrarError(mensaje) {
         confirmButtonText: 'Aceptar'
     });
 }
-

@@ -29,6 +29,7 @@ function cargarDatosEnTabla(datos) {
 
 
   datosFiltrados.forEach(function (fila) {
+
     
     var nuevaFila = $('<tr>');
 // Obtener la fecha de la cadena de fecha y hora
@@ -73,7 +74,6 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     nuevaFila.append('<td>' + fila.chavetas + '</td>');
     nuevaFila.append('<td>' + fila.listo + '</td>');
     nuevaFila.append('<td>' + (fila.entregado == 0 ? "NO" : "SI") + '</td>');
-    
 
     var tiempoTemp = 0;
 
@@ -95,8 +95,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
 
     var botonDiag = $('<button>').addClass('btn btn-warning').append('<span class="material-symbols-outlined">check_box</span>');
     var botonPago = $('<button>').addClass('btn btn-success').append('<span class="material-symbols-outlined">payments</span>');
-    var botonPrint = $('<button>').addClass('btn btn-danger').append('<span class="material-symbols-outlined">print</span>');
-    var botonEditarTd = $('<td>').append(botonPago, botonDiag, botonPrint);
+    var botonEditarTd = $('<td>').append(botonPago, botonDiag);
     nuevaFila.append(botonEditarTd);
     
     
@@ -110,14 +109,10 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
       diagModal(fila.id, tiempoRestanteDetenido);
   });
 
-  botonPrint.on('click', function() {
-    imprimir(fila);
- });
-
 
     var temporizadorInterval, cronometroInterval;
 
-    nuevaFila.append('<td>' + fila.diagnostico + '</td>');
+   
 
 
     // Función para actualizar el temporizador
@@ -224,22 +219,12 @@ function obtenerDatos() {
     .catch(error => mostrarError('Error al obtener los datos de la tabla: ' + error));
 }
 
+
+
 obtenerDatos();
 
 // Capturar el evento de clic en el botón "Ingresar"
 $('#btnIngresar').click(function () {
   $('#formulario').modal('show');
-});
-
-document.getElementById('activarServicio').addEventListener('change', function() {
-  var formularioMetodoPago = document.getElementById('formularioTipoServicio');
-  var manobra = document.getElementById('manobra');
-  if (this.checked) {
-      formularioMetodoPago.style.display = 'block';
-      manobra.style.display='block';
-  } else {
-      formularioMetodoPago.style.display = 'none';
-      manobra.style.display='none';
-  }
 });
 

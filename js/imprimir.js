@@ -1,56 +1,23 @@
-function mostrar_impresoras(){
-    connetor_plugin.obtenerImpresoras()
-                .then(impresoras => {                    
-                 console.log(impresoras)
-                });
-}
+const URLPlugin = "http://localhost:8000"
 
-
-async function imprimir(fila){
-    let nombreImpresora = "POS-80";
-    let api_key = "12345"
-
-    var fechaCompleta = new Date(fila.fechaHora);
-    var dia = fechaCompleta.getDate();
-    var mes = fechaCompleta.getMonth() + 1; // Sumar 1 porque los meses se indexan desde 0
-    // Formatear el día y el mes para que tengan dos dígitos si es necesario
-    var diaFormateado = dia < 10 ? '0' + dia : dia;
-    var mesFormateado = mes < 10 ? '0' + mes : mes;
-    // Obtener la hora y los minutos
-    var hora = fechaCompleta.getHours();
-    var minutos = fechaCompleta.getMinutes();
-    // Formatear la hora y los minutos para que tengan dos dígitos si es necesario
-    var horaFormateada = hora < 10 ? '0' + hora : hora;
-    var minutosFormateados = minutos < 10 ? '0' + minutos : minutos;
-    // Crear la cadena de fecha en el formato DD-MM
-    var fechaFormateada = diaFormateado + '-' + mesFormateado;
-    // Crear la cadena de hora y minutos en el formato HH:MM
-    var horaMinutosFormateados = horaFormateada + ':' + minutosFormateados;
-
-    var precioTotal = fila.precio1 + fila.precio2;
+const imprimirImagenes = async (nombreImpresora) => {
+    const conector = new ConectorPluginV3(URLPlugin);
+    conector.Iniciar();
+    const url = "https://scontent.cdninstagram.com/v/t51.2885-19/373376114_318773317376988_2859474416677294583_n.jpg?stp=dst-jpg_e0_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=OtLVLU8ppngAb4dMeis&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfBfpXE70FaalFrn5B-TgRz8KulwIaSSAu8d0XAD-kTIyA&oe=66176E2F&_nc_sid=10d13b";
+  
+        conector.EscribirTexto("Multirepuestos Polania");
+        conector.Feed(1);
+        conector.DescargarImagenDeInternetEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 160)
+        conector.Iniciar(); //Nota: esto solo es necesario en ocasiones, por ejemplo en mi impresora debo hacerlo siempre que acabo de imprimir una imagen
+        conector.Feed(1);
+    
    
-    const conector = new connetor_plugin()
-                conector.fontsize("2")
-                conector.textaling("center")
-                conector.text("MULTIREPUESTOS POLANIA")
-                conector.fontsize("1")
-                conector.feed("3")
-                conector.textaling("left")
-                conector.text("Fecha: " + fechaFormateada + horaMinutosFormateados) 
-                conector.text("------------------------------------------")
-                conector.text("Turno: " + fila.turno)
-                conector.text("Vehiculo: " + fila.vehiculo)
-                conector.text("Cantidad : " + fila.cantidad)
-                conector.text("Precio : $" + precioTotal)
-                if(fila.flauta == 1){
-                    conector.text("Flauta : Si")
-                }
-
-            const resp = await conector.imprimir(nombreImpresora, api_key);
-            if (resp === true) {              
-            
-            } else {
-                 console.log("Problema al imprimir: "+resp)                    
-            
-            }
+    const respuesta = await conector
+        .imprimirEn(nombreImpresora);
+    if (respuesta === true) {
+        CorteParcial();
+        alert("Impreso correctamente");
+    } else {
+        alert("Error: " + respuesta);
+    }
 }
