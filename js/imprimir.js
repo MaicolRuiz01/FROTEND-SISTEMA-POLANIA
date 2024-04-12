@@ -33,12 +33,10 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     const conector = new ConectorPluginV3(URLPlugin);
     
     conector.Iniciar();
-    conector.Corte(1);
 
-    conector.EstablecerEnfatizado("2");
+    conector.EstablecerEnfatizado("Bold");
     conector.EstablecerAlineacion("center");
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
-    conector.EstablecerEnfatizado("1");
     conector.Feed("3");
     conector.EstablecerAlineacion("left");
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
