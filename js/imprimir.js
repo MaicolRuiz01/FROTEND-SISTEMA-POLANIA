@@ -45,9 +45,6 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     if (fila.flauta == 1) {
         conector.EscribirTexto("Flauta : Si");
     }
-
-    conector.Iniciar(); //Nota: esto solo es necesario en ocasiones, por ejemplo en mi impresora debo hacerlo siempre que acabo de imprimir una imagen
-    conector.Feed(1);
     conector.Corte(1);
 
 
