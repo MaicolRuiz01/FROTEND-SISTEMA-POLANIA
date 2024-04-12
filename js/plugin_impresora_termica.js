@@ -225,7 +225,7 @@ const ConectorPluginV3 = (() => {
                 body: JSON.stringify(payload),
             });
             
-            return await response.json() + + this.Corte(1);
+            return await response.json();
             
         }
     }
