@@ -223,9 +223,9 @@ const ConectorPluginV3 = (() => {
             const response = await fetch(this.ruta + "/imprimir", {
                 method: "POST",
                 body: JSON.stringify(payload),
+                this.Corte(1);
             });
-            this.Corte(1);
-            this.CorteParcial();
+            
             return await response.json();
             
         }
