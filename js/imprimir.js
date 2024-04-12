@@ -34,7 +34,6 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     
     conector.Iniciar();
 
-    conector.EstablecerEnfatizado("Bold");
     conector.EstablecerAlineacion("center");
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
     conector.Feed("3");
