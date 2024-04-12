@@ -31,9 +31,12 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
 
 
     const conector = new ConectorPluginV3(URLPlugin);
-    
+    const url = "https://scontent.fcuc1-1.fna.fbcdn.net/v/t39.30808-1/374462390_122111429378019951_2695154912822763709_n.jpg?stp=dst-jpg_p200x200&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEcXpfNom0PpNl6yP9sKggyTjRnX3Xw5tdONGdfdfDm18U7VPsEc3kZ7bjol8iMlO8GpYgQCeIgQETQG9Zi9jz6&_nc_ohc=qIc10nTXwdwAb7cuNaE&_nc_ht=scontent.fcuc1-1.fna&oh=00_AfAf6eUU-m1_z3OQVgJSLFzPBQMqYPmMki4WD24ESV7bug&oe=661FA89E";
+
     conector.Iniciar();
     conector.Corte(1);
+    conector.DescargarImagenDeInternetEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 3);
+    conector.Feed(2);
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
      conector.Feed(2);
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
