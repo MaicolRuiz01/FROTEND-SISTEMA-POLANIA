@@ -33,18 +33,25 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     const conector = new ConectorPluginV3(URLPlugin);
     
     conector.Iniciar();
-
+    conector.Corte(1);
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
      conector.Feed(2);
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
-    conector.EscribirTexto("------------------------------------------");
+    conector.Feed(1);
     conector.EscribirTexto("Turno: " + fila.turno);
+    conector.Feed(1);
+    conector.EscribirTexto("------------------------------------------");
+    conector.Feed(1);
     conector.EscribirTexto("Vehiculo: " + fila.vehiculo);
+    conector.Feed(1);
     conector.EscribirTexto("Cantidad : " + fila.cantidad);
+    conector.Feed(1);
     conector.EscribirTexto("Precio : $" + precioTotal);
+    conector.Feed(1);
     if (fila.flauta == 1) {
         conector.EscribirTexto("Flauta : Si");
     }
+    conector.Feed(1);
     conector.Corte(1);
 
 
