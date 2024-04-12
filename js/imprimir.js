@@ -22,6 +22,7 @@ const imprimirImagenes = async (nombreImpresora) => {
     const respuesta = await conector
         .imprimirEn(nombreImpresora);
     if (respuesta === true) {
+        conector.Corte(1);
         alert("Impreso correctamente");
     } else {
         alert("Error: " + respuesta);
