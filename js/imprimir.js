@@ -1,5 +1,12 @@
 const URLPlugin = "http://localhost:8000"
 
+function mostrar_impresoras(){
+    connetor_plugin.obtenerImpresoras()
+                .then(impresoras => {                    
+                 console.log(impresoras)
+                });
+}
+
 const imprimirImagenes = async (nombreImpresora) => {
     const conector = new ConectorPluginV3(URLPlugin);
     conector.Iniciar();
@@ -10,6 +17,7 @@ const imprimirImagenes = async (nombreImpresora) => {
         conector.DescargarImagenDeInternetEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 160)
         conector.Iniciar(); //Nota: esto solo es necesario en ocasiones, por ejemplo en mi impresora debo hacerlo siempre que acabo de imprimir una imagen
         conector.Feed(1);
+        conector.CorteParcial();
     
    
     const respuesta = await conector
