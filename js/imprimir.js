@@ -34,6 +34,7 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     
     conector.Iniciar();
     conector.Corte(1);
+    conector.CorteParcial();
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
      conector.Feed(2);
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
@@ -53,6 +54,7 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
     }
     conector.Feed(1);
     conector.Corte(1);
+    conector.CorteParcial();
 
 
 
@@ -60,6 +62,7 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
         .imprimirEn(nombreImpresora);
     if (respuesta === true) {
         conector.Corte(1);
+        conector.CorteParcial();
         alert("Impreso correctamente");
     } else {
         alert("Error: " + respuesta);
