@@ -8,7 +8,7 @@ function mostrar_impresoras() {
 }
 
 const imprimirImagenes = async (nombreImpresora, fila) => {
-    const conector = new ConectorPluginV3(URLPlugin);
+    
 
     var fechaCompleta = new Date(fila.fechaHora);
     var dia = fechaCompleta.getDate();
@@ -29,16 +29,17 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
 
     var precioTotal = fila.precio1 + fila.precio2;
 
-    const url = "../img/logo.jpg";
+    const url = "";
+
+    const conector = new ConectorPluginV3(URLPlugin);
     
     conector.Iniciar();
     conector.Corte(1);
 
     conector.CargarImagenLocalEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 160);
-    conector.EstablecerEnfatizado("2");
+    conector.Iniciar();
     conector.EstablecerAlineacion("center");
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
-    conector.EstablecerEnfatizado("1");
     conector.Feed("3");
     conector.EstablecerAlineacion("left");
     conector.EscribirTexto("Fecha: " + fechaFormateada + horaMinutosFormateados);
