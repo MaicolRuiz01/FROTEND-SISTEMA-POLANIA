@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var precio2 = 0
         var listo = "proceso";
         var entregado = 0;
+        
         if (precio == '') {
             precio = ((cantidad * 5000) + 10000);
         }

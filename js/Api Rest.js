@@ -93,12 +93,12 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
 
     // Crear una celda para los botones de dinero y diagnóstico y agregar los botones dentro de ella
 
-
+    nuevaFila.append('<td>' + fila.diagnostico + '</td>');
     var botonDiag = $('<button>').addClass('btn btn-warning').append('<span class="material-symbols-outlined">check_box</span>');
     var botonPago = $('<button>').addClass('btn btn-success').append('<span class="material-symbols-outlined">payments</span>');
     var botonPrint = $('<button>').addClass('btn btn-danger').append('<span class="material-symbols-outlined">print</span>');
     var botonEditarTd = $('<td>').append(botonPago, botonDiag, botonPrint);
-    nuevaFila.append('<td>' + fila.diagnostico + '</td>');
+   
     nuevaFila.append(botonEditarTd);
     
     
