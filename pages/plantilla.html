@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla de ticket POS</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <style>
+    /* Estilos personalizados */
+    @media print {
+      /* Ajustar el tamaño del papel */
+      @page {
+        size: 72.1mm 210mm; /* Ancho x Altura */
+        margin: 0mm; /* Eliminar el margen */
+        border: none; /* Eliminar el borde */
+      }
+
+      /* Estilos para el contenido del ticket */
+      .ticket {
+        width: 72.1mm;
+        height: 210mm;
+        background-color: white;
+        padding: 2mm;
+        text-align: left;
+      }
+
+      .ticket h3 {
+        margin: 0; /* Eliminar el margen */
+      }
+
+      .ticket .product {
+        display: flex;
+        justify-content: space-between;
+        margin: 0; /* Eliminar el margen */
+        padding: 0; /* Eliminar el padding */
+      }
+
+      .ticket .product span {
+        margin: 0; /* Eliminar el margen */
+        padding: 0; /* Eliminar el padding */
+      }
+
+      .ticket-header {
+        text-align: center;
+      }
+
+      .ticket-header img {
+        width: 290px;
+        height: 100px;
+        display: block;
+        margin: 0px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenido del ticket -->
+  <div class="ticket">
+    <div class="ticket-header">
+      <img src="../img/logo.png" alt="Encabezado del ticket">
+    </div>
+    <div style="text-align: center">
+      <span style="text-align: center" id="fecha" ></span>
+    </div>
+    <div class="product">
+        <span>----------------------------------------</span>
+    </div>
+    <div class="product">
+      <span style="font-weight: bold; ">Turno: </span>
+      <span style="font-weight: bold; " id="turno"></span>
+    </div>
+    <div class="product">
+      <span>Vehiculo: </span>
+      <span id="vehiculo"></span>
+    </div>
+    <div class="product">
+      <span>Inyectores: </span>
+      <span id="inyectores"></span>
+    </div>
+    <div class="product">
+      <span>Precio: </span>
+      <span id="precio"></span>
+    </div>
+    <div class="product">
+      <span  id="chavetas1"> </span>
+      <span  id="chavetas2"> </span>
+    </div>
+    <div class="product">
+      <span  id="flauta1"> </span>
+      <span  id="flauta2"> </span>
+    </div>
+   
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="../js/Api Rest.js"></script>
+  <script src="../js/imprimir.js"></script>
+  <script src="../js/plugin_impresora_termica.js"></script>
+  <!-- Script para imprimir automáticamente al cargar la página -->
+ 
+
+</body>
+</html>
