@@ -98,6 +98,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     var botonPago = $('<button>').addClass('btn btn-success').append('<span class="material-symbols-outlined">payments</span>');
     var botonPrint = $('<button>').addClass('btn btn-danger').append('<span class="material-symbols-outlined">print</span>');
     var botonEditarTd = $('<td>').append(botonPago, botonDiag, botonPrint);
+    nuevaFila.append('<td>' + fila.diagnostico + '</td>');
     nuevaFila.append(botonEditarTd);
     
     
@@ -232,4 +233,16 @@ obtenerDatos();
 // Capturar el evento de clic en el botón "Ingresar"
 $('#btnIngresar').click(function () {
   $('#formulario').modal('show');
+});
+
+document.getElementById('activarServicio').addEventListener('change', function() {
+  var formularioMetodoPago = document.getElementById('formularioTipoServicio');
+  var manobra = document.getElementById('manobra');
+  if (this.checked) {
+      formularioMetodoPago.style.display = 'block';
+      manobra.style.display='block';
+  } else {
+      formularioMetodoPago.style.display = 'none';
+      manobra.style.display='none';
+  }
 });

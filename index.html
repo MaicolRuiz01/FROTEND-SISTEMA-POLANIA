@@ -73,16 +73,32 @@
     </div>
 
     <button id="btnIngresar" class="btn btn-primary mb-3">Ingresar</button>
-    <button onclick="mostrar_impresoras()">Mostrar Impresora</button>
-    <div class="container">
-      <div id="gananciasDelDia"></div>
-      <div id="davivienda"></div>
-      <div id="bancolombia"></div>
-      <div id="credito"></div>
+    <button onclick="mostrar_impresoras()" class="btn btn-primary">Mostrar Impresora</button>
+    <div class="container" id="resultados">
+      <div class="row">
+        <div class="col-sm">
+          <div id="gananciasDelDia"></div>
+        </div>
+        <div class="col-sm">
+          <div id="davivienda"></div>
+        </div>
+        <div class="col-sm">
+          <div id="bancolombia"></div>
+        </div>
+        <div class="col-sm">
+          <div id="credito"></div>
+        </div>
+        <div class="col-sm">
+          <div id="bajadas"></div>
+        </div>
+        <div class="col-sm">
+          <div id="sincro"></div>
+        </div>
+      </div>
     </div>
 
 
-    <br>
+  
 
     <table id="tablaDatos" class="table table-striped table-bordered text-center">
       <thead class="thead-dark">
@@ -101,8 +117,8 @@
           <th>Listo</th>
           <th>Entregado</th>
           <th>Temporizador</th>
+          <th>Diagnostico</th>
           <th>Acciones</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -158,13 +174,25 @@
           <label class="form-check-label" for="tiempoEspecialCheckbox">Tiempo Especial</label>
         </div>
 
-        <br>
-        <!-- Agrega aquí los otros campos del formulario según tus necesidades -->
-        <!-- Por ejemplo: -->
-        <!-- <div class="form-group">
-        <label for="nombreCliente">Nombre del Cliente:</label>
-        <input type="text" class="form-control" id="nombreCliente" name="nombreCliente">
-      </div> -->
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="activarServicio">
+            <label class="form-check-label" for="activarMetodoPago">Activar Servicio Pocho</label>
+          </div>
+        </div>
+
+       
+          <div id="formularioTipoServicio" style="display: none;">
+            <div class="form-group">
+              <label for="form-editar-tipo_servicio">Tipo de servicio:</label>
+              <select class="form-control" id="tiposervicio" name="tipo_servicio">
+                <option value="BAJADA">BAJADA</option>
+                <option value="SINCRONIZACION">SINCRONIZACION</option>
+              </select>
+            </div>
+          </div>
+          
+        <input type="number" class="form-control" id="manobra" name="ManoObra" placeholder="Mano de Obra" style="display: none;">
         <button type="submit" class="btn btn-primary" >Guardar</button>
       </form>
       </div>
