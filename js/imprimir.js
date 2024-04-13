@@ -35,7 +35,7 @@ const imprimirImagenes = async (nombreImpresora, fila) => {
 
     conector.Iniciar();
     conector.Corte(1);
-    conector.DescargarImagenDeInternetEImprimir(url, ConectorPluginV3.TAMAÑO_IMAGEN_NORMAL, 3);
+    conector.DescargarImagenDeInternetEImprimir(url, 1, 2);
     conector.Feed(2);
     conector.EscribirTexto("MULTIREPUESTOS POLANIA");
      conector.Feed(2);
