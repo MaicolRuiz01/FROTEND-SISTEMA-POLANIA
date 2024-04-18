@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     // Si la respuesta es exitosa, mostrar una alerta de éxito
                     mostrarExito('Servicio guardado exitosamente.');
-                    if(datos.tipoServicio == ""){
+                    if(datos.tipoServicio == ''){
                     imprimir(datos);
                     }
 

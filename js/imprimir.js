@@ -2,7 +2,14 @@ async function imprimir(fila) {
     try {
         // Obtener el elemento iframe
         const iframe = document.getElementById('iframeTicket');
-        var precio = fila.precio1 + fila.precio2;
+        var precio1 = parseFloat(fila.precio1);
+        var precio2 = parseFloat(fila.precio2);
+
+        var precio = precio1 + precio2;
+
+        if(fila.manoObra > 0){
+            precio = precio - fila.manoObra;
+        }
 
         var fechaCompleta = new Date(fila.fechaHora);
         fechaCompleta.setDate(fechaCompleta.getDate() - 1);
@@ -26,6 +33,7 @@ async function imprimir(fila) {
         url.searchParams.append('precio', precio);
         url.searchParams.append('chavetas', fila.chavetas);
         url.searchParams.append('flauta', fila.flauta);
+        url.searchParams.append('manoObra', fila.manoObra);
 
 
 
