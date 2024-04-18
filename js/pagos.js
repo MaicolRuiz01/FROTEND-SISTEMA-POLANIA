@@ -11,11 +11,17 @@ $(document).ready(function() {
   });
 });
 
-function editarModal(id, precio1, pago1, pago2) {
+function editarModal(id, precio1, pago1, pago2, manoObra) {
   $("#modal-pago").modal('show');
 
+  var precioCompleto = precio1;
+  if(pago1 == 'Sin Pagar'){
+  precioCompleto = precio1 + manoObra;
+  }
+
+
   document.getElementById("form-editar-id").value = id;
-  document.getElementById("precio1").value = precio1;
+  document.getElementById("precio1").value = precioCompleto;
   document.getElementById("metodo_pago").value = pago1;
   document.getElementById("metodo_pago2").value = pago2;
 }
@@ -52,7 +58,7 @@ function modificarDatos(elementos) {
   const metodoPago2 = document.getElementById("metodo_pago2").value;
   const precio1 = document.getElementById("precio1").value;
   var entregado = document.getElementById('entregadoCheckbox').checked;
-  const precioAnterior = elementos.precio1 + elementos.precio2;
+  const precioAnterior = elementos.precio1 + elementos.precio2 + elementos.manoObra;
   var fechaActual = new Date();
   var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
   var precio2 = 0;
@@ -73,6 +79,8 @@ function modificarDatos(elementos) {
   var tiempoEspecial = elementos.tiempo;
   var demora = elementos.demora;
   var diagnostico = elementos.diagnostico;
+  var tiposervicio = elementos.tipoServicio;
+  var manobra = elementos.manoObra;
 
   if(listo == "proceso" && entregado == 1){
 
@@ -99,7 +107,9 @@ function modificarDatos(elementos) {
     pago1: metodoPago1,
     pago2: metodoPago2,
     demora: demora,
-    diagnostico: diagnostico
+    diagnostico: diagnostico,
+    tipoServicio: tiposervicio,
+    manoObra: manobra
   }
   fetch(`https://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
     method: 'PUT',

@@ -71,6 +71,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     nuevaFila.append('<td>' + fila.pago2 + '</td>');
     nuevaFila.append('<td>' + fila.precio1 / 1000 + '</td>');
     nuevaFila.append('<td>' + fila.precio2 / 1000 + '</td>');
+    nuevaFila.append('<td>' + fila.manoObra / 1000 + '</td>');
     nuevaFila.append('<td>' + (fila.flauta == 0 ? "N" : "S") + '</td>');
     nuevaFila.append('<td>' + fila.chavetas + '</td>');
     nuevaFila.append('<td>' + fila.listo + '</td>');
@@ -105,7 +106,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     
     // Agregar la función onclick al botón
     botonPago.on('click', function() {
-        editarModal(fila.id, fila.precio1, fila.pago1, fila.pago2);
+        editarModal(fila.id, fila.precio1, fila.pago1, fila.pago2, fila.manoObra);
     });
 
     botonDiag.on('click', function() {

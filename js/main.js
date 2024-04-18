@@ -13,6 +13,7 @@ function obtenerGananciasDelDia() {
         let credito=0;
         let bajada=0;
         let sincro=0;
+        let manoBra=0;
 
         data.forEach(servicio => {
             // Extraer la fecha del servicio y obtener solo la parte de la fecha (sin la hora)
@@ -20,21 +21,48 @@ function obtenerGananciasDelDia() {
 
             // Verificar si el servicio se realizó en el día de hoy y si fue pagado en efectivo
             if (fechaServicio === fechaActual &&
-                (servicio.pago1 === 'EFECTIVO' || servicio.pago2 === 'EFECTIVO')) {
-                gananciasTotales += servicio.precio1 + servicio.precio2;
+                (servicio.pago1 === 'EFECTIVO')) {
+                gananciasTotales += servicio.precio1;
             }
+
             if (fechaServicio === fechaActual &&
-                (servicio.pago1 === 'DAVIVIENDA' || servicio.pago2 === 'DAVIVIENDA')) {
-                gananciasDavivienda += servicio.precio1 + servicio.precio2;
+                (servicio.pago2 === 'EFECTIVO')) {
+                gananciasTotales += servicio.precio2;
             }
+
             if (fechaServicio === fechaActual &&
-                (servicio.pago1 === 'BANCOLOMBIA' || servicio.pago2 === 'BANCOLOMBIA')) {
-                gananciasBancolombia += servicio.precio1 + servicio.precio2;
+                (servicio.pago1 === 'DAVIVIENDA')) {
+                gananciasDavivienda += servicio.precio1;
             }
+
             if (fechaServicio === fechaActual &&
-                (servicio.pago1 === 'CREDITO' || servicio.pago2 === 'CREDITO')) {
-                credito += servicio.precio1 + servicio.precio2;
+                (servicio.pago2 === 'DAVIVIENDA')) {
+                gananciasDavivienda += servicio.precio2;
             }
+
+
+            if (fechaServicio === fechaActual &&
+                (servicio.pago1 === 'BANCOLOMBIA')) {
+                gananciasBancolombia += servicio.precio1;
+            }
+
+            if (fechaServicio === fechaActual &&
+                (servicio.pago2 === 'BANCOLOMBIA')) {
+                gananciasBancolombia += servicio.precio2;
+            }
+
+
+            if (fechaServicio === fechaActual &&
+                (servicio.pago1 === 'CREDITO')) {
+                credito += servicio.precio1;
+            }
+
+            if (fechaServicio === fechaActual &&
+                (servicio.pago2 === 'CREDITO')) {
+                credito += servicio.precio2;
+            }
+
+
             if (fechaServicio === fechaActual &&
                 (servicio.tipoServicio === 'BAJADA')) {
                 bajada += servicio.manoObra;
@@ -42,6 +70,11 @@ function obtenerGananciasDelDia() {
             if (fechaServicio === fechaActual &&
                 (servicio.tipoServicio === 'SINCRONIZACION')) {
                 sincro += servicio.manoObra;
+            }
+
+            if (fechaServicio === fechaActual &&
+                (servicio.pago1 != 'Sin Pagar')) {
+                manoBra += servicio.manoObra;
             }
         });
         // Mostrar las ganancias en un div en el frontend
@@ -51,6 +84,8 @@ function obtenerGananciasDelDia() {
         const divCredito = document.getElementById('credito');
         const divBajada = document.getElementById('bajadas');
         const divSincro = document.getElementById('sincro');
+        const divmano = document.getElementById('manoObra');
+
 
         divGanancias.textContent = `EFECTIVO: ${gananciasTotales}`;
         divDavivienda.textContent = `DAVIVIENDO: ${gananciasDavivienda}`;
@@ -58,6 +93,7 @@ function obtenerGananciasDelDia() {
         divCredito.textContent = `CREDITO: ${credito}`;
         divBajada.textContent = `BAJADA: ${bajada}`;
         divSincro.textContent = `SINCRONIZACION: ${sincro}`;
+        divmano.textContent = `MANO DE OBRA: ${manoBra}`;
     })
     .catch(error => console.error('Error al obtener las ganancias del día:', error));
 }

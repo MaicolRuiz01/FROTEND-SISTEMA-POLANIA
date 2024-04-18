@@ -36,6 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
             precio = ((cantidad * 5000) + 10000);
         }
 
+        if (manobra == '') {
+            manobra = 0;
+        }
+
         if (chavetas == '') {
             chavetas = 0;
         }
@@ -78,7 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     // Si la respuesta es exitosa, mostrar una alerta de éxito
                     mostrarExito('Servicio guardado exitosamente.');
+                    if(datos.tipoServicio == ""){
                     imprimir(datos);
+                    }
 
 
                 } else {

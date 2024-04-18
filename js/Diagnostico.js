@@ -14,7 +14,7 @@ $("body").on("submit", "#form-diag", function (event) {
 });
 
 function editarDatos() {
-  
+
 
   const id = document.getElementById("form-diag-id").value;
 
@@ -22,7 +22,7 @@ function editarDatos() {
     .then(response => response.json())
     .then(elementos => modificarDiagnostico(elementos));
 
- 
+
 }
 
 function modificarDiagnostico(elementos) {
@@ -35,35 +35,35 @@ function modificarDiagnostico(elementos) {
   var mas = document.getElementById('mas').value;
   var menos = document.getElementById('menos').value;
   var diag = "";
- 
- if(pulso != ""){
-  diag = diag + "P: " + pulso;
- }
 
- if(goteo != ""){
-  diag = diag + "G: " + goteo;
- }
+  if (pulso != "") {
+    diag = diag + "P: " + pulso;
+  }
 
- if(directo != ""){
-  diag = diag + "D: " + directo;
- }
+  if (goteo != "") {
+    diag = diag + "G: " + goteo;
+  }
 
- if(mas != ""){
-  diag = diag + "mas: " + mas;
- }
+  if (directo != "") {
+    diag = diag + "D: " + directo;
+  }
 
- if(menos != ""){
-  diag = diag + "menos: " + menos;
- }
+  if (mas != "") {
+    diag = diag + "mas: " + mas;
+  }
 
- if(diag == ""){
-  diag ="Todo bien";
- }
-    
+  if (menos != "") {
+    diag = diag + "menos: " + menos;
+  }
+
+  if (diag == "") {
+    diag = "Todo bien";
+  }
+
 
 
   var listo = "listo";
-  
+
 
 
 
@@ -81,8 +81,10 @@ function modificarDiagnostico(elementos) {
   var metodoPago1 = elementos.pago1;
   var metodoPago2 = elementos.pago2;
   var demoraCargada = elementos.demora;
+  var tiposervicio = elementos.tipoServicio;
+  var manobra = elementos.manoObra;
 
-  if(demoraCargada != null){
+  if (demoraCargada != null) {
     demora = demoraCargada;
   }
 
@@ -102,7 +104,9 @@ function modificarDiagnostico(elementos) {
     precio2: precio2,
     pago1: metodoPago1,
     pago2: metodoPago2,
-    demora: demora
+    demora: demora,
+    tipoServicio: tiposervicio,
+    manoObra: manobra
   }
 
   fetch(`https://sistema-polania-production.up.railway.app/servicios/save/${id}`, { // Utiliza "id" en la URL
