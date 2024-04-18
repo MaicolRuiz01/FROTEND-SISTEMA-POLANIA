@@ -58,7 +58,13 @@ function modificarDatos(elementos) {
   const metodoPago2 = document.getElementById("metodo_pago2").value;
   const precio1 = document.getElementById("precio1").value;
   var entregado = document.getElementById('entregadoCheckbox').checked;
-  const precioAnterior = elementos.precio1 + elementos.precio2 + elementos.manoObra;
+
+  var precioAnterior = elementos.precio1 + elementos.precio2;
+  if(elementos.pago1 == 'Sin Pagar'){
+  precioAnterior = elementos.precio1 + elementos.precio2 + elementos.manoObra;
+  }
+
+  
   var fechaActual = new Date();
   var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
   var precio2 = 0;
