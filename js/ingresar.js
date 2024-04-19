@@ -31,13 +31,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var precio2 = 0
         var listo = "proceso";
         var entregado = 0;
-        
-        
 
-        
+
+
+
         if (precio == '') {
-            precio = ((cantidad * 5000) + 10000);
-        }else{
+            if (cantidad == '') {
+                cantidad == 0;
+                precio = 0;
+            } else {
+                precio = ((cantidad * 5000) + 10000);
+            }
+        } else {
             precio = precio * 1000;
         }
 
@@ -89,9 +94,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     // Si la respuesta es exitosa, mostrar una alerta de éxito
                     mostrarExito('Servicio guardado exitosamente.');
-                    if(datos.manoObra == 0){
+                    if (datos.manoObra == 0) {
                         imprimir(datos);
-                        }
+                    }
 
 
                 } else {
