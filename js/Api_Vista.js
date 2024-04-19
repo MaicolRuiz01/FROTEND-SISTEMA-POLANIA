@@ -58,10 +58,11 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     nuevaFila.append('<td>' + fila.vehiculo + '</td>');
     nuevaFila.append('<td>' + fila.cantidad + '</td>');
 
+    var precio = fila.precio1 + fila.precio2;
+    var precioTotal = precio + fila.manoObra;
 
-    nuevaFila.append('<td>' + fila.precio1 / 1000 + '</td>');
-    nuevaFila.append('<td>' + fila.precio2 / 1000 + '</td>');
-    nuevaFila.append('<td>' + fila.manoObra / 1000 + '</td>');
+    nuevaFila.append('<td>' + precio / 1000 + '</td>');
+    nuevaFila.append('<td>' + precioTotal / 1000 + '</td>');
 
     var tiempoTemp = 0;
 

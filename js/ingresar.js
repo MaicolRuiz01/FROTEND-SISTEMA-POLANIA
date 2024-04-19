@@ -125,8 +125,8 @@ function mostrarExito(mensaje) {
     }).then((result) => {
         if (result.isConfirmed) {
             // Cerrar el modal
+            $("#formulario").modal('hide');
             obtenerDatos();
-            window.location.href = 'vista.html';
         }
     });
 }

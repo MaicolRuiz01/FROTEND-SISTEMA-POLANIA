@@ -7,9 +7,7 @@ async function imprimir(fila) {
 
         var precio = precio1 + precio2;
 
-        if(fila.manoObra > 0){
-            precio = precio - fila.manoObra;
-        }
+        
 
         var fechaCompleta = new Date(fila.fechaHora);
         fechaCompleta.setDate(fechaCompleta.getDate() - 1);
@@ -25,7 +23,7 @@ async function imprimir(fila) {
         // Formatear la fecha y la hora
         var fechaHoraFormateada = fechaCompleta.toLocaleString('es-ES', opcionesFechaHora);
         // Crear una URL con los datos de fila
-        const url = new URL('./pages/plantilla.html', window.location.href);
+        const url = new URL('/pages/plantilla.html', window.location.href);
         url.searchParams.append('fecha', fechaHoraFormateada);
         url.searchParams.append('turno', fila.turno);
         url.searchParams.append('vehiculo', fila.vehiculo);
