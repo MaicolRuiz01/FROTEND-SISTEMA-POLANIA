@@ -29,7 +29,7 @@ function modificarDiagnostico(elementos) {
     var id = document.getElementById("form-obra-id").value;
     var manoObra = document.getElementById("manoobra").value;
 
-
+    manoObra = manoObra * 1000;
     var cliente = elementos.nombreCliente;
     var vehiculo = elementos.vehiculo;
     var cantidad = elementos.cantidad;
