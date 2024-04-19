@@ -154,6 +154,7 @@ function mostrarExito(mensaje) {
       $("#modal-diag").modal('hide');
       // Actualizar la tabla
       obtenerDatos();
+      window.location.href = 'vista.html';
     }
   });
 }

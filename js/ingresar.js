@@ -32,8 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var listo = "proceso";
         var entregado = 0;
         
+        
+
+        
         if (precio == '') {
             precio = ((cantidad * 5000) + 10000);
+        }else{
+            precio = precio * 1000;
         }
 
         if (manobra == '') {
@@ -43,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (chavetas == '') {
             chavetas = 0;
         }
+
+        manobra = manobra * 1000;
 
         // Crear el objeto de datos para enviar al servidor
         var datos = {
@@ -82,9 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     // Si la respuesta es exitosa, mostrar una alerta de éxito
                     mostrarExito('Servicio guardado exitosamente.');
-                    if(datos.tipoServicio == ''){
-                    imprimir(datos);
-                    }
+                    if(datos.manoObra == 0){
+                        imprimir(datos);
+                        }
 
 
                 } else {
@@ -119,7 +126,7 @@ function mostrarExito(mensaje) {
         if (result.isConfirmed) {
             // Cerrar el modal
             obtenerDatos();
-            window.location.href = 'index.html';
+            window.location.href = 'vista.html';
         }
     });
 }

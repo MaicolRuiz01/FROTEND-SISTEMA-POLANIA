@@ -129,7 +129,9 @@ function modificarDatos(elementos) {
       if (response.ok) {
         // Si la respuesta es exitosa, mostrar una alerta de éxito
         mostrarExito('Servicio guardado exitosamente.');
+        if(datos.manoObra > 0){
         imprimir(datos);
+        }
       } else {
         // Si hay un error en la respuesta, obtener el mensaje de error del servidor
         response.json().then(function (data) {
@@ -163,6 +165,7 @@ function mostrarExito(mensaje) {
       $("#modal-pago").modal('hide');
       // Actualizar la tabla
       obtenerDatos();
+      window.location.href = 'vista.html';
       
     }
   });
