@@ -58,8 +58,10 @@ function cargarDatosEnTabla(datos) {
     nuevaFila.append('<td>' + fila.cantidad + '</td>');
 
     var precio = fila.precio1 + fila.precio2;
-    var precioTotal = precio + fila.manoObra;
-    nuevaFila.append('<td>' + precioTotal / 1000 + '</td>');
+    if(fila.pago1 == "Sin Pagar"){
+      precio += fila.manoObra;
+    }
+    nuevaFila.append('<td>' + precio / 1000 + '</td>');
 
     var tiempoTemp = 0;
 

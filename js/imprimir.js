@@ -5,7 +5,12 @@ async function imprimir(fila) {
         var precio1 = parseFloat(fila.precio1);
         var precio2 = parseFloat(fila.precio2);
         var manobra = parseFloat(fila.manoObra);
+
         var precio = (precio1 + precio2) - manobra;
+        
+        if(fila.pago1 == "Sin Pagar"){
+            precio = precio1 + precio2;
+        }
 
         
 
