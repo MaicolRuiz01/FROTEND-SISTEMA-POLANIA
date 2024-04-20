@@ -10,19 +10,19 @@ function cargarDatosEnTabla(datos) {
   var datosFiltrados = datos.filter(function (fila) {
     // Obtener la fecha actual en el formato "YYYY-MM-DD"
     // Verificar si la fecha de la fila es igual a la fecha actual
-    return  fila.pago1 == "Sin Pagar" || fila.entregado == 0 || fila.listo == "proceso";
-});
-
- // Si no se encuentran datos que cumplan con los criterios de filtrado, mostrar una alerta
- if (datosFiltrados.length === 0) {
-  Swal.fire({
-    icon: 'warning',
-    title: 'Sin resultados',
-    text: 'No se encontraron datos que cumplan con los criterios de filtrado.',
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Aceptar'
+    return fila.pago1 == "Sin Pagar" || fila.entregado == 0 || fila.listo == "proceso";
   });
-}
+
+  // Si no se encuentran datos que cumplan con los criterios de filtrado, mostrar una alerta
+  if (datosFiltrados.length === 0) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Sin resultados',
+      text: 'No se encontraron datos que cumplan con los criterios de filtrado.',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar'
+    });
+  }
 
   // Limpiar intervalos anteriores
   intervalos.forEach(intervalo => clearInterval(intervalo));
@@ -31,26 +31,25 @@ function cargarDatosEnTabla(datos) {
 
   datosFiltrados.forEach(function (fila) {
 
-    
+
     var nuevaFila = $('<tr>');
-// Obtener la fecha de la cadena de fecha y hora
-var fechaCompleta = new Date(fila.fechaHora);
-fechaCompleta.setDate(fechaCompleta.getDate() - 1);
-// Configurar la zona horaria para Madrid
-var opcionesFechaHora = {
-  timeZone: 'Europe/Madrid',
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit'
-};
+    // Obtener la fecha de la cadena de fecha y hora
+    var fechaHora = new Date(fila.fechaHora);
 
-// Formatear la fecha y la hora
-var fechaHoraFormateada = fechaCompleta.toLocaleString('es-ES', opcionesFechaHora);
+    // Restar 5 horas (5 * 60 * 60 * 1000 milisegundos)
+    fechaHora.setTime(fechaHora.getTime() - (5 * 60 * 60 * 1000));
 
-// Agregar la fecha y la hora formateadas a la fila
-nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
+    // Obtener los componentes de la fecha y hora
+    var dia = ('0' + fechaHora.getDate()).slice(-2);
+    var mes = ('0' + (fechaHora.getMonth() + 1)).slice(-2);
+    var hora = ('0' + fechaHora.getHours()).slice(-2);
+    var minutos = ('0' + fechaHora.getMinutes()).slice(-2);
+
+    // Formatear la fecha y hora como "DD-MM HH:MM"
+    var fechaFormateada = dia + '-' + mes + ' ' + hora + ':' + minutos;
+
+    // Agregar la fecha y hora formateadas a la fila
+    nuevaFila.append('<td>' + fechaFormateada + '</td>');
 
 
 
@@ -60,8 +59,6 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
 
     var precio = fila.precio1 + fila.precio2;
     var precioTotal = precio + fila.manoObra;
-
-    nuevaFila.append('<td>' + precio / 1000 + '</td>');
     nuevaFila.append('<td>' + precioTotal / 1000 + '</td>');
 
     var tiempoTemp = 0;
@@ -86,28 +83,28 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
     var botonPago = $('<button>').addClass('btn btn-success').append('<span class="material-symbols-outlined">payments</span>');
     var botonPrint = $('<button>').addClass('btn btn-danger').append('<span class="material-symbols-outlined">print</span>');
     var botonEditarTd = $('<td>').append(botonPago, botonDiag, botonPrint);
-   
+
     nuevaFila.append(botonEditarTd);
-    
-    
-    
+
+
+
     // Agregar la función onclick al botón
-    botonPago.on('click', function() {
-        editarModal(fila.id, fila.precio1, fila.pago1, fila.pago2, fila.manoObra);
+    botonPago.on('click', function () {
+      editarModal(fila.id, fila.precio1, fila.pago1, fila.pago2, fila.manoObra);
     });
 
-    botonDiag.on('click', function() {
+    botonDiag.on('click', function () {
       diagModal(fila.id, tiempoRestanteDetenido);
-  });
+    });
 
-  botonPrint.on('click', function() {
-    imprimir(fila);
- });
+    botonPrint.on('click', function () {
+      imprimir(fila);
+    });
 
 
     var temporizadorInterval, cronometroInterval;
 
-   
+
 
 
     // Función para actualizar el temporizador
@@ -130,7 +127,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
       tiempoRestanteDetenido = tiempoRestanteFormateado + " T";
       if (tiempoRestante <= 0) {
         clearInterval(temporizadorInterval); // Detener el temporizador principal
-        
+
         actualizarcronometro();
       }
     }
@@ -158,7 +155,7 @@ nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
       // Formatear el tiempo restante como una cadena (por ejemplo, "01:59:59")
       var tiempoTranscurridoFormateado = (horas < 10 ? '0' : '') + horas + ':' + (minutos < 10 ? '0' : '') + minutos + ':' + (segundos < 10 ? '0' : '') + segundos;
       // Actualizar el texto del temporizador
-      
+
       tiempoRestanteDetenido = tiempoTranscurridoFormateado + " C";
 
       var cronometroInterval = setInterval(actualizarcronometro, 1000);
@@ -223,14 +220,14 @@ $('#btnIngresar').click(function () {
   $('#formulario').modal('show');
 });
 
-document.getElementById('activarServicio').addEventListener('change', function() {
+document.getElementById('activarServicio').addEventListener('change', function () {
   var formularioMetodoPago = document.getElementById('formularioTipoServicio');
   var manobra = document.getElementById('manobra');
   if (this.checked) {
-      formularioMetodoPago.style.display = 'block';
-      manobra.style.display='block';
+    formularioMetodoPago.style.display = 'block';
+    manobra.style.display = 'block';
   } else {
-      formularioMetodoPago.style.display = 'none';
-      manobra.style.display='none';
-  }
+    formularioMetodoPago.style.display = 'none';
+    manobra.style.display = 'none';
+  }
 });

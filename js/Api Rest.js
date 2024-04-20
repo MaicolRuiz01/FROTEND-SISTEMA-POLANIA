@@ -33,25 +33,23 @@ function cargarDatosEnTabla(datos) {
 
 
     var nuevaFila = $('<tr>');
-    // Obtener la fecha de la cadena de fecha y hora
-    var fechaCompleta = new Date(fila.fechaHora);
-    fechaCompleta.setDate(fechaCompleta.getDate() - 1);
-    // Configurar la zona horaria para Madrid
-    var opcionesFechaHora = {
-      timeZone: 'Europe/Madrid',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
+    // Obtener la fecha actual en el formato "DD-MM HH:MM"
+    var fechaHora = new Date(fila.fechaHora);
 
-    // Formatear la fecha y la hora
-    var fechaHoraFormateada = fechaCompleta.toLocaleString('es-ES', opcionesFechaHora);
-
-    // Agregar la fecha y la hora formateadas a la fila
-    nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
-
+    // Restar 5 horas (5 * 60 * 60 * 1000 milisegundos)
+    fechaHora.setTime(fechaHora.getTime() - (5 * 60 * 60 * 1000));
+    
+    // Obtener los componentes de la fecha y hora
+    var dia = ('0' + fechaHora.getDate()).slice(-2);
+    var mes = ('0' + (fechaHora.getMonth() + 1)).slice(-2);
+    var hora = ('0' + fechaHora.getHours()).slice(-2);
+    var minutos = ('0' + fechaHora.getMinutes()).slice(-2);
+    
+    // Formatear la fecha y hora como "DD-MM HH:MM"
+    var fechaFormateada = dia + '-' + mes + ' ' + hora + ':' + minutos;
+    
+    // Agregar la fecha y hora formateadas a la fila
+    nuevaFila.append('<td>' + fechaFormateada + '</td>');
 
 
     nuevaFila.append('<td>' + fila.turno + '</td>');

@@ -8,21 +8,21 @@ function cargarDatosEnTabla(datos) {
   tabla.empty();
 
   var datosFiltrados = datos.filter(function (fila) {
-    // Obtener la fecha actual en el formato "YYYY-MM-DD"
-    var hoy = new Date();
-    var hoyFormateado = hoy.toISOString().split('T')[0];
-
-    // Obtener la fecha de la fila en el mismo formato
+    // Restar 5 horas a la fecha de la fila
     var fechaFila = new Date(fila.fechaHora);
-    var fechaFilaFormateada = fechaFila.toISOString().split('T')[0];
+    fechaFila.setTime(fechaFila.getTime() - (5 * 60 * 60 * 1000)); // Restar 5 horas
+
+    // Obtener la fecha actual en el mismo formato
+    var hoy = new Date();
 
     // Extraer solo el año, mes y día de la fecha actual y la fecha de la fila
     var hoySoloFecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1).toString().padStart(2, '0') + '-' + hoy.getDate().toString().padStart(2, '0');
     var filaSoloFecha = fechaFila.getFullYear() + '-' + (fechaFila.getMonth() + 1).toString().padStart(2, '0') + '-' + fechaFila.getDate().toString().padStart(2, '0');
 
-    // Verificar si la fecha de la fila es igual a la fecha actual (solo comparando año, mes y día)
+    // Verificar si la fecha de la fila restada de 5 horas es igual a la fecha actual (solo comparando año, mes y día)
     return hoySoloFecha === filaSoloFecha && fila.manoObra > 0;
   });
+
 
 
   // Si no se encuentran datos que cumplan con los criterios de filtrado, mostrar una alerta
@@ -43,25 +43,23 @@ function cargarDatosEnTabla(datos) {
 
   datosFiltrados.forEach(function (fila) {
     var nuevaFila = $('<tr>');
+    var fechaHora = new Date(fila.fechaHora);
 
-    // Obtener la fecha de la cadena de fecha y hora
-    var fechaCompleta = new Date(fila.fechaHora);
-    fechaCompleta.setDate(fechaCompleta.getDate() - 1);
-    // Configurar la zona horaria para Madrid
-    var opcionesFechaHora = {
-      timeZone: 'Europe/Madrid',
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
+    // Restar 5 horas (5 * 60 * 60 * 1000 milisegundos)
+    fechaHora.setTime(fechaHora.getTime() - (5 * 60 * 60 * 1000));
 
-    // Formatear la fecha y la hora
-    var fechaHoraFormateada = fechaCompleta.toLocaleString('es-ES', opcionesFechaHora);
+    // Obtener los componentes de la fecha y hora
+    var dia = ('0' + fechaHora.getDate()).slice(-2);
+    var mes = ('0' + (fechaHora.getMonth() + 1)).slice(-2);
+    var hora = ('0' + fechaHora.getHours()).slice(-2);
+    var minutos = ('0' + fechaHora.getMinutes()).slice(-2);
 
-    // Agregar la fecha y la hora formateadas a la fila
-    nuevaFila.append('<td>' + fechaHoraFormateada + '</td>');
+    // Formatear la fecha y hora como "DD-MM HH:MM"
+    var fechaFormateada = dia + '-' + mes + ' ' + hora + ':' + minutos;
+
+    // Agregar la fecha y hora formateadas a la fila
+    nuevaFila.append('<td>' + fechaFormateada + '</td>');
+
     nuevaFila.append('<td>' + fila.turno + '</td>');
     nuevaFila.append('<td>' + fila.vehiculo + '</td>');
     nuevaFila.append('<td>' + fila.manoObra / 1000 + '</td>');
