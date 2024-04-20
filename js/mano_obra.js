@@ -2,7 +2,7 @@ function obraModal(id, manoObra) {
     $("#mano-obra").modal('show');
 
     document.getElementById("form-obra-id").value = id;
-    document.getElementById("manoobra").value = manoObra;
+    document.getElementById("manoobra").value = manoObra/1000;
 }
 
 $("body").on("submit", "#form-obra", function (event) {
