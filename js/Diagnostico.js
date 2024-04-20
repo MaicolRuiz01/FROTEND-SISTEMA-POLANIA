@@ -121,6 +121,7 @@ function modificarDiagnostico(elementos) {
       if (response.ok) {
         // Si la respuesta es exitosa, mostrar una alerta de éxito
         mostrarExito('Servicio guardado exitosamente.');
+        $("#modal-diag").modal('hide');
       } else {
         // Si hay un error en la respuesta, obtener el mensaje de error del servidor
         response.json().then(function (data) {

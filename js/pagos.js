@@ -19,10 +19,13 @@ function editarModal(id, precio1, pago1, pago2, manoObra) {
   precioCompleto = precio1 + manoObra;
   }
 
+  
+  precioCompleto = precioCompleto / 1000;
+
 
   document.getElementById("form-editar-id").value = id;
   document.getElementById("precio1").value = precioCompleto;
-  document.getElementById("metodo_pago").value = pago1;
+  document.getElementById("metodo_pago").value = 'EFECTIVO';
   document.getElementById("metodo_pago2").value = pago2;
 }
 
@@ -56,14 +59,14 @@ function modificarDatos(elementos) {
   const id = document.getElementById("form-editar-id").value;
   const metodoPago1 = document.getElementById("metodo_pago").value;
   const metodoPago2 = document.getElementById("metodo_pago2").value;
-  const precio1 = document.getElementById("precio1").value;
+  var precio1 = document.getElementById("precio1").value;
   var entregado = document.getElementById('entregadoCheckbox').checked;
 
   var precioAnterior = elementos.precio1 + elementos.precio2;
   if(elementos.pago1 == 'Sin Pagar'){
-  precioAnterior = elementos.precio1 + elementos.precio2 + elementos.manoObra;
+  precioAnterior += elementos.manoObra;
   }
-
+ precio1 = precio1 * 1000;
   
   var fechaActual = new Date();
   var fechaHoraFormateada = fechaActual.toISOString().slice(0, 19); // Obtener la fecha y hora sin los milisegundos
@@ -129,6 +132,7 @@ function modificarDatos(elementos) {
       if (response.ok) {
         // Si la respuesta es exitosa, mostrar una alerta de éxito
         mostrarExito('Servicio guardado exitosamente.');
+        $("#modal-pago").modal('hide');
         if(datos.manoObra > 0){
         imprimir(datos);
         }

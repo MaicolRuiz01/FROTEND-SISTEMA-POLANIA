@@ -4,8 +4,8 @@ async function imprimir(fila) {
         const iframe = document.getElementById('iframeTicket');
         var precio1 = parseFloat(fila.precio1);
         var precio2 = parseFloat(fila.precio2);
-
-        var precio = precio1 + precio2;
+        var manobra = parseFloat(fila.manoObra);
+        var precio = (precio1 + precio2) - manobra;
 
         
 

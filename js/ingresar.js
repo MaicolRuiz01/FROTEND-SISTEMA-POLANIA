@@ -132,6 +132,7 @@ function mostrarExito(mensaje) {
             // Cerrar el modal
             $("#formulario").modal('hide');
             obtenerDatos();
+            limpiarModal();
         }
     });
 }
@@ -145,4 +146,31 @@ function mostrarError(mensaje) {
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Aceptar'
     });
+}
+
+function limpiarModal() {
+    // Aquí debes limpiar los campos del modal según tus necesidades
+    // Por ejemplo, si tienes campos de entrada de texto, puedes establecer su valor a vacío
+    $('#cliente').val('');
+    $('#vehiculo').val('');
+    $('#cantidad').val('');
+    $('#chavetas').val('');
+    $('#especial').val('');
+    $('#flexSwitchCheckDefault').val('');
+    $('#activarServicio').prop('checked', false);
+    $('#tiposervicio').val('');
+    $('#manobra').val('');
+
+    document.getElementById('activarServicio').addEventListener('change', function () {
+        var formularioMetodoPago = document.getElementById('formularioTipoServicio');
+        var manobra = document.getElementById('manobra');
+        if (this.checked) {
+          formularioMetodoPago.style.display = 'block';
+          manobra.style.display = 'block';
+        } else {
+          formularioMetodoPago.style.display = 'none';
+          manobra.style.display = 'none';
+        }
+      });
+    // Y así sucesivamente para todos los campos que necesites limpiar
 }
