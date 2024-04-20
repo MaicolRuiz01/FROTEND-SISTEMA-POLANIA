@@ -62,6 +62,7 @@ function cargarDatosEnTabla(datos) {
 
     nuevaFila.append('<td>' + fila.turno + '</td>');
     nuevaFila.append('<td>' + fila.vehiculo + '</td>');
+    nuevaFila.append('<td>' + fila.tipoServicio + '</td>');
     nuevaFila.append('<td>' + fila.manoObra / 1000 + '</td>');
 
     var botonDiag = $('<button>').addClass('btn btn-warning').append('<span class="material-symbols-outlined">check_box</span>');

@@ -109,16 +109,16 @@ function obtenerGananciasDelDia() {
             const divCambioPartes = document.getElementById('cambioPartes');
 
 
-            divGanancias.textContent = `EFECTIVO: ${gananciasTotales}`;
-            divDavivienda.textContent = `DAVIVIENDO: ${gananciasDavivienda}`;
-            divBancolombia.textContent = `BANCOLOMBIA: ${gananciasBancolombia}`;
-            divCredito.textContent = `CREDITO: ${credito}`;
-            divBajada.textContent = `BAJADA: ${bajada}`;
-            divSincro.textContent = `SINCRONIZACION: ${sincro}`;
-            divSuspension.textContent = `SUSPENSION: ${suspension}`;
-            divOtro.textContent = `OTRO: ${otro}`;
-            divCambioPartes.textContent = `CAMBIO PARTES: ${cambioPartes}`;
-            divmano.textContent = `MANO DE OBRA: ${manoBra}`;
+            divGanancias.textContent = `EFECTIVO: ${gananciasTotales/1000}`;
+            divDavivienda.textContent = `DAVIVIENDO: ${gananciasDavivienda/1000}`;
+            divBancolombia.textContent = `BANCOLOMBIA: ${gananciasBancolombia/1000}`;
+            divCredito.textContent = `CREDITO: ${credito/1000}`;
+            divBajada.textContent = `BAJADA: ${bajada/1000}`;
+            divSincro.textContent = `SINCRONIZACION: ${sincro/1000}`;
+            divSuspension.textContent = `SUSPENSION: ${suspension/1000}`;
+            divOtro.textContent = `OTRO: ${otro/1000}`;
+            divCambioPartes.textContent = `CAMBIO PARTES: ${cambioPartes/1000}`;
+            divmano.textContent = `MANO DE OBRA: ${manoBra/1000}`;
         })
         .catch(error => console.error('Error al obtener las ganancias del día:', error));
 }
