@@ -20,7 +20,7 @@ function cargarDatosEnTabla(datos) {
     var filaSoloFecha = fechaFila.getFullYear() + '-' + (fechaFila.getMonth() + 1).toString().padStart(2, '0') + '-' + fechaFila.getDate().toString().padStart(2, '0');
 
     // Verificar si la fecha de la fila restada de 5 horas es igual a la fecha actual (solo comparando año, mes y día)
-    return hoySoloFecha === filaSoloFecha;
+    return hoySoloFecha == filaSoloFecha;
   });
 
   // Si no se encuentran datos que cumplan con los criterios de filtrado, mostrar una alerta
