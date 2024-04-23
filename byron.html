@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Servicios</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Multirepuestos Polania</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="vista.html">Empleados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="mecanico.html">Mecanico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="byron.html">Byron</a>
+                              </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+
+    </header>
+
+    <div class="container">
+        <div id="titulo">
+            <h1 class="text-center" id="titulo2">Lista de Servicios</h1>
+        </div>
+
+        <button id="btnIngresar" class="btn btn-primary mb-3">Ingresar</button>
+
+        <div class="container" id="resultados">
+            <div class="row">
+
+                <div class="col-sm" style="display: none;">
+                    <div id="gananciasDelDia"></div>
+                </div>
+                <div class="col-sm" style="display: none;">
+                    <div id="davivienda"></div>
+                </div>
+                <div class="col-sm" style="display: none;">
+                    <div id="bancolombia"></div>
+                </div>
+                <div class="col-sm" style="display: none;">
+                    <div id="credito"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div id="bajadas"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="sincro"></div>
+                </div>
+                <div class="col-sm">
+                    <div id="suspension"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div id="cambioPartes"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div id="otro"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div id="manoObra"></div>
+                </div>
+            </div>
+
+
+
+
+
+            <table id="tablaDatos" class="table table-striped table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Turno</th>
+                        <th>Vehículo</th>
+                        <th>Servicio</th>
+                        <th>Mano de Obra</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí se cargarán los datos de la tabla -->
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <!-- Formulario emergente para ingresar nuevos servicios -->
+        <div id="formulario" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ingresar Nuevo Servicio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="formularioServicio">
+                        <div class="form-group">
+                            <label for="cliente">Cliente:</label>
+                            <input type="text" class="form-control" id="cliente" name="cliente">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vehiculo">Vehículo:</label>
+                            <input type="text" class="form-control" id="vehiculo" name="vehiculo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad:</label>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chavetas">Chavetas:</label>
+                            <input type="number" class="form-control" id="chavetas" name="vehiculo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="especial">Precio Especial:</label>
+                            <input type="number" class="form-control" id="especial" name="especial">
+                        </div>
+
+                        <div class="form-check form-switch" id="Flauta">
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">Flauta</label>
+                        </div>
+
+                        <div class="form-check form-switch" id="tiempoEspecialContainer">
+                            <input class="form-check-input" type="checkbox" role="switch" id="tiempoEspecialCheckbox">
+                            <label class="form-check-label" for="tiempoEspecialCheckbox">Tiempo Especial</label>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="activarServicio">
+                                <label class="form-check-label" for="activarMetodoPago">Mano de Obra</label>
+                            </div>
+                        </div>
+
+
+                        <div id="formularioTipoServicio" style="display: none;">
+                            <div class="form-group">
+                                <label for="form-editar-tipo_servicio">Tipo de servicio:</label>
+                                <select class="form-control" id="tiposervicio" name="tipo_servicio">
+                                    <option value="BAJADA">BAJADA</option>
+                                    <option value="SINCRONIZACION">SINCRONIZACION</option>
+                                    <option value="SUSPENSION">SUSPENSION</option>
+                                    <option value="CAMBIO PARTES">CAMBIO PARTES</option>
+                                    <option value="OTRO">OTRO...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="number" class="form-control" id="manobra" name="ManoObra"
+                            placeholder="Mano de Obra" style="display: none;">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario emergente para ingresar nuevos servicios -->
+    <div id="mano-obra" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingresar Diagnostico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí cargamos el formulario utilizando un iframe -->
+                    <form id="form-obra">
+                        <input type="hidden" id="form-obra-id" name="form-diag-id" />
+                        <div class="form-group">
+                            <label for="cliente">Nuevo Monto mano de obra</label>
+                            <input type="number" class="form-control" id="manoobra" name="manoobra">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <iframe id="iframeTicket" style="display:none;"></iframe>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Tu script JS -->
+    <script src="js/Api_Mecanico.js"></script>
+    <script src="js/mano_obra.js"></script>
+    <script src="js/imprimir.js"></script>
+    <script src="js/plugin_impresora_termica.js"></script>
+    <script src="js/ingresar.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
