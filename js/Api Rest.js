@@ -8,9 +8,19 @@ function cargarDatosEnTabla(datos) {
   tabla.empty();
 
   var datosFiltrados = datos.filter(function (fila) {
-    // Obtener la fecha actual en el formato "YYYY-MM-DD"
-    // Verificar si la fecha de la fila es igual a la fecha actual
-    return fila.pago1 == "Sin Pagar" || fila.entregado == 0 || fila.listo == "proceso";
+    // Restar 5 horas a la fecha de la fila
+    var fechaFila = new Date(fila.fechaHora);
+    fechaFila.setTime(fechaFila.getTime() - (5 * 60 * 60 * 1000)); // Restar 5 horas
+
+    // Obtener la fecha actual en el mismo formato
+    var hoy = new Date();
+
+    // Extraer solo el año, mes y día de la fecha actual y la fecha de la fila
+    var hoySoloFecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1).toString().padStart(2, '0') + '-' + hoy.getDate().toString().padStart(2, '0');
+    var filaSoloFecha = fechaFila.getFullYear() + '-' + (fechaFila.getMonth() + 1).toString().padStart(2, '0') + '-' + fechaFila.getDate().toString().padStart(2, '0');
+
+    // Verificar si la fecha de la fila restada de 5 horas es igual a la fecha actual (solo comparando año, mes y día)
+    return hoySoloFecha === filaSoloFecha;
   });
 
   // Si no se encuentran datos que cumplan con los criterios de filtrado, mostrar una alerta

@@ -110,7 +110,7 @@ function obtenerGananciasDelDia() {
 
 
             divGanancias.textContent = `EFECTIVO: ${gananciasTotales/1000}`;
-            divDavivienda.textContent = `DAVIVIENDO: ${gananciasDavivienda/1000}`;
+            divDavivienda.textContent = `DAVIVIENDA: ${gananciasDavivienda/1000}`;
             divBancolombia.textContent = `BANCOLOMBIA: ${gananciasBancolombia/1000}`;
             divCredito.textContent = `CREDITO: ${credito/1000}`;
             divBajada.textContent = `BAJADA: ${bajada/1000}`;
