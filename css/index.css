@@ -3,6 +3,7 @@
     margin-top: 50px;
   }
 .table {
+    margin-top: 50px;
     width: 100%;
 
 }
@@ -17,7 +18,20 @@
   /* Estilos para todas las celdas th dentro de la tabla con el id 'tablaDatos' */
   /* Ajusta los valores según sea necesario */
   text-align: center;
+  background-color: #2980B9;
+  color: white;
+  border: none;
+  
+   /* Establece estilos para todas las celdas th dentro de la tabla con el id 'tablaDatos' */
+  /* Ajusta los valores según sea necesario */
+  max-width: 200px; /* Ancho máximo de la celda */
+  min-width: auto; /* Ajusta el ancho mínimo automáticamente al ancho del contenido */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta el contenido que desborda el ancho máximo */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para indicar texto truncado */
+  
 }
+
 #titulo2{
   
   text-align: center;
@@ -61,4 +75,44 @@
   margin-top: 15px;
   width: 200px;
 }
+#logo {
+  width: 300px; /* Tamaño inicial de la imagen */
+  height: auto;
+  transition: transform 0.3s; /* Transición suave al agrandar */
+}
+
+#logo:hover {
+  transform: scale(1.2); /* Escala al 120% cuando el cursor está encima */
+}
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; /* Color de texto por defecto */
+  padding: 10px;
+}
+
+.nav-item:hover .nav-link {
+  background-color: #3498DB; /* Cambia el fondo a azul cuando se pasa el cursor */
+  color: white; /* Cambia el color del texto a blanco */
+  border-radius: 5px;
+}
+.material-symbols-outlined {
+  display: inline-block; /* Hace que el span se muestre en línea */
+  vertical-align: middle; /* Alinea verticalmente con el enlace */
+  margin-right: 1px; /* Espacio entre el icono y el enlace */
+}
+
+#navtotal{
+  margin-bottom: 300px;
+}
+#btnIngresar{
+  margin-top: 100px;
+  width: 300px;
+}
+
+
+
 

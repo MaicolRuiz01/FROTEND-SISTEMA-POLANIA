@@ -3,7 +3,7 @@ var intervalos = [];
 var nombreImpresora = "POS-80";
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) {
-  var tabla = $('#tablaDatos tbody');
+  var tabla = $('#tablaDatos tbody ');
   // Limpiar la tabla antes de cargar nuevos datos
   tabla.empty();
 
