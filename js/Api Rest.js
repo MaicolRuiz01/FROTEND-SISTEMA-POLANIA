@@ -151,7 +151,7 @@ function cargarDatosEnTabla(datos) {
       tiempoRestanteDetenido = tiempoRestanteFormateado + " T";
       if (tiempoRestante <= 0) {
         clearInterval(temporizadorInterval); // Detener el temporizador principal
-
+        //temporizador.parent().css('background-color', 'red');
         actualizarcronometro();
       }
     }
